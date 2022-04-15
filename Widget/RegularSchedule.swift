@@ -51,10 +51,13 @@ struct RegularSchedule {
         
         let dateArr = [before1, pd1, before2, pd2, before3, pd3, before4, pd4, before5, pd5, before6, pd6, before7, pd7, before8, pd8, before9, pd9, before10, pd10, beforeEnd]
         
+        print("len dateArr: \(dateArr.count)")
+        
         return dateArr
     }
     func getNames() -> [String] {
-        let names = ["Before School", "Period 1", "Before Period 2", "Period 2", "Before Period 3", "Period 3", "Before Period 4", "Period 4", "Before Period 5", "Period 5", "Before Period 6", "Period 6", "Before Period 7", "Period 7", "Before Period 8", "Period 8", "Before Period 9", "Period 9", "Before Period 10", "Period 10", "After School"]
+        let names = ["Chill", "Before School", "Period 1", "Before Period 2", "Period 2", "Before Period 3", "Period 3", "Before Period 4", "Period 4", "Before Period 5", "Period 5", "Before Period 6", "Period 6", "Before Period 7", "Period 7", "Before Period 8", "Period 8", "Before Period 9", "Period 9", "Before Period 10", "Period 10", "After School"]
+        print("len names: \(names.count)")
         return names
     }
     func getPeriod(_ date: Date) -> Int {
