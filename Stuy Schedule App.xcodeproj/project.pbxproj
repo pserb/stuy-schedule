@@ -18,11 +18,9 @@
 		C514AB0B28090896005E459F /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C514AB0728090896005E459F /* Widget.intentdefinition */; };
 		C514AB0C28090896005E459F /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C514AB0728090896005E459F /* Widget.intentdefinition */; };
 		C5269F15280F830A00F48AEF /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F14280F830A00F48AEF /* Period.swift */; };
-		C5269F17280F85EA00F48AEF /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F16280F85EA00F48AEF /* Schedule.swift */; };
 		C5269F1D280F8CD200F48AEF /* RegularSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */; };
 		C5269F1E280F929D00F48AEF /* RegularSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */; };
 		C5269F1F280F92B700F48AEF /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F14280F830A00F48AEF /* Period.swift */; };
-		C5269F20280F92BB00F48AEF /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F16280F85EA00F48AEF /* Schedule.swift */; };
 		C5269F25280FBDE100F48AEF /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C514AAFE28090896005E459F /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -64,7 +62,6 @@
 		C514AB0828090896005E459F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C514AB0A28090896005E459F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5269F14280F830A00F48AEF /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
-		C5269F16280F85EA00F48AEF /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSchedule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +149,6 @@
 			children = (
 				C5269F1B280F8CC700F48AEF /* data */,
 				C5269F14280F830A00F48AEF /* Period.swift */,
-				C5269F16280F85EA00F48AEF /* Schedule.swift */,
 			);
 			path = Schedules;
 			sourceTree = "<group>";
@@ -266,7 +262,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5269F17280F85EA00F48AEF /* Schedule.swift in Sources */,
 				C5269F15280F830A00F48AEF /* Period.swift in Sources */,
 				C514AAEF28090856005E459F /* ContentView.swift in Sources */,
 				C514AAED28090856005E459F /* Stuy_ScheduleApp.swift in Sources */,
@@ -279,7 +274,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5269F20280F92BB00F48AEF /* Schedule.swift in Sources */,
 				C5269F1F280F92B700F48AEF /* Period.swift in Sources */,
 				C5269F1E280F929D00F48AEF /* RegularSchedule.swift in Sources */,
 				C514AB0B28090896005E459F /* Widget.intentdefinition in Sources */,
