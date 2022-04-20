@@ -11,21 +11,6 @@ import Intents
 
 var regularSchedule = RegularSchedule()
 
-//extension Date {
-//    /// Returns the amount of hours from another date
-//    func hours(from date: Date) -> Int {
-//        return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
-//    }
-//    /// Returns the amount of minutes from another date
-//    func minutes(from date: Date) -> Int {
-//        return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
-//    }
-//    /// Returns the amount of seconds from another date
-//    func seconds(from date: Date) -> Int {
-//        return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
-//    }
-//}
-
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: ConfigurationIntent())
@@ -40,31 +25,23 @@ struct Provider: IntentTimelineProvider {
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries a minute apart, starting from the current date.
-        let currentDate = Date()
-        var calendar = Calendar.current
+        let date = Date()
+        let calendar = Calendar.current
 
-        let hour = calendar.component(.hour, from: currentDate)
-        let minute = calendar.component(.minute, from: currentDate)
-        let second = calendar.component(.second, from: currentDate)
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        _ = calendar.component(.second, from: date)
         
-//        let timeTo = regularSchedule.getSchedule()[0]! - Calendar.current.date(bySettingHour: 7, minute: 50, second: 0, of: currentDate)!
+        let currentDate = calendar.date(bySettingHour: hour, minute: minute, second: 0, of: date)!
         
-        for minuteOffset in stride(from: 0, to: 5, by: 1) {
-            let entryDate = Calendar.current.date(bySettingHour: hour, minute: minute + minuteOffset, second: 0, of: currentDate)!
+        // 12 hrs
+        for minuteOffset in stride(from: 0, to: 60 * 24, by: 1) {
+            let entryDate = calendar.date(byAdding: .minute, value: minuteOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, configuration: configuration)
             entries.append(entry)
         }
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
-        
-        // update timeline every second
-        var timer = Timer()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
-            (timer) in
-            
-            WidgetCenter.shared.reloadAllTimelines()
-//            completion(timeline)
-        }
         completion(timeline)
     }
 }
@@ -74,45 +51,125 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
 }
 
-struct widgetEntryView : View {
+struct widgetSmallView : View {
     var entry: Provider.Entry
 
     var body: some View {
         let date = entry.date
         
-//        let timeToHours = date.hours(from: regularSchedule.getSchedule()[0]!)
-//        var period: Int = 0
-//        let regSchedule = regularSchedule.getSchedule()
-//
-//        var minTime: Int = date.minutes(from: regSchedule[0]!) * -1
+        let cal = Calendar.current
         
-//        ForEach(regSchedule) { timeTo in
-//            if (
-//        }
-        
-        if (Calendar.current.component(.hour, from: date) > 14) || (Calendar.current.component(.hour, from: date) < 7) {
+        if (cal.component(.hour, from: date) < 7) ||
+            ((cal.component(.hour, from: date) == 15) && (cal.component(.minute, from: date) >= 35)) ||
+            (cal.component(.hour, from: date) >= 16) {
             VStack {
-                Text("Relax.")
+                Text("Relax")
                     .font(.system(size: 30))
                     .fontWeight(.bold)
             }
         } else {
             let period = regularSchedule.getPeriod(date)
-            
-            let title = regularSchedule.getNames()[period]
-            let timeToMinutes = date.minutes(from: regularSchedule.getSchedule()[period]!) * -1
+            let title = period.name
+            let timeToMinutes = date.minutes(from: period.endTime) * -1
             
             VStack {
                 Text("\(title)")
-                    .padding()
-                Text("\(timeToMinutes) min")
-                    .font(.system(size: 30))
+                    .padding(10.0)
+                    .font(.system(size: 18))
+                Spacer()
+                Text("\(timeToMinutes)")
+                    .foregroundColor(.red)
+                    .font(.system(size: 50))
                     .fontWeight(.bold)
-                    .padding()
+                    
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom)
                 Spacer()
                 Spacer()
             }
             
+        }
+    }
+}
+
+struct widgetMediumView : View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        let date = entry.date
+
+        let cal = Calendar.current
+    
+        if (cal.component(.hour, from: date) < 7) ||
+            ((cal.component(.hour, from: date) == 15) && (cal.component(.minute, from: date) >= 35)) ||
+            (cal.component(.hour, from: date) >= 16) {
+            VStack {
+                Text("Relax 🅱️")
+                    .font(.system(size: 40))
+                    .fontWeight(.bold)
+            }
+        } else {
+            let period = regularSchedule.getPeriod(date)
+            let title = period.name
+            let timeToMinutes = date.minutes(from: period.endTime) * -1
+            let timeFromMinutes = date.minutes(from: period.startTime)
+            
+            VStack {
+                Text("\(title)")
+                    .padding(14.0)
+                    .padding(.top, 40.0)
+                    .font(.system(size: 22))
+                Spacer()
+                HStack {
+                    Text("\(timeFromMinutes)")
+                        .foregroundColor(.green)
+                        .font(.system(size: 50))
+                        .fontWeight(.bold)
+
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 6.0)
+                        .padding(.trailing, 40.0)
+                    
+                    Text("\(timeToMinutes)")
+                        .foregroundColor(.red)
+                        .font(.system(size: 50))
+                        .fontWeight(.bold)
+
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 6.0)
+                        .padding(.leading, 40.0)
+                }
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+            }
+
+        }
+    }
+}
+
+struct widgetEntryView : View {
+    var entry: Provider.Entry
+    
+    @Environment(\.widgetFamily) var family
+
+
+    // only small and medium are supported (seen in widget struct)
+    @ViewBuilder
+    var body: some View {
+        
+        switch family {
+        case .systemSmall:
+            widgetSmallView(entry: entry)
+        case .systemMedium:
+            widgetMediumView(entry: entry)
+        case .systemLarge:
+            Text("Lorge")
+        default:
+            Text("📮")
         }
     }
 }
@@ -127,12 +184,19 @@ struct widget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        // !! //
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
 struct widget_Previews: PreviewProvider {
     static var previews: some View {
-        widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        Group {
+            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+                
+        }
     }
 }

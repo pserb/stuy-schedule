@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var currentDate = Date()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         VStack {
             Text("Hello, world!")
                 .padding()
             Text("There is a widget!")
                 .padding()
+            Text("\(currentDate)")
+                .onReceive(timer) { input in
+                    currentDate = input
+                }
         }
     }
 }

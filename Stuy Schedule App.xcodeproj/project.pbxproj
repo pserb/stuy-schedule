@@ -17,13 +17,17 @@
 		C514AB0928090896005E459F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C514AB0828090896005E459F /* Assets.xcassets */; };
 		C514AB0B28090896005E459F /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C514AB0728090896005E459F /* Widget.intentdefinition */; };
 		C514AB0C28090896005E459F /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C514AB0728090896005E459F /* Widget.intentdefinition */; };
-		C514AB0F28090896005E459F /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C514AAFE28090896005E459F /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C514AB15280908B7005E459F /* RegularSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C514AB14280908B7005E459F /* RegularSchedule.swift */; };
-		C514AB162809095A005E459F /* RegularSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C514AB14280908B7005E459F /* RegularSchedule.swift */; };
+		C5269F15280F830A00F48AEF /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F14280F830A00F48AEF /* Period.swift */; };
+		C5269F17280F85EA00F48AEF /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F16280F85EA00F48AEF /* Schedule.swift */; };
+		C5269F1D280F8CD200F48AEF /* RegularSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */; };
+		C5269F1E280F929D00F48AEF /* RegularSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */; };
+		C5269F1F280F92B700F48AEF /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F14280F830A00F48AEF /* Period.swift */; };
+		C5269F20280F92BB00F48AEF /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F16280F85EA00F48AEF /* Schedule.swift */; };
+		C5269F25280FBDE100F48AEF /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C514AAFE28090896005E459F /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C514AB0D28090896005E459F /* PBXContainerItemProxy */ = {
+		C5269F26280FBDE100F48AEF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C514AAE128090856005E459F /* Project object */;
 			proxyType = 1;
@@ -33,13 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C514AB1328090896005E459F /* Embed App Extensions */ = {
+		C5269F28280FBDE100F48AEF /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C514AB0F28090896005E459F /* WidgetExtension.appex in Embed App Extensions */,
+				C5269F25280FBDE100F48AEF /* WidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,7 +63,9 @@
 		C514AB0728090896005E459F /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
 		C514AB0828090896005E459F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C514AB0A28090896005E459F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C514AB14280908B7005E459F /* RegularSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSchedule.swift; sourceTree = "<group>"; };
+		C5269F14280F830A00F48AEF /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		C5269F16280F85EA00F48AEF /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSchedule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 		C514AAE028090856005E459F = {
 			isa = PBXGroup;
 			children = (
+				C5269F13280F82F900F48AEF /* Schedules */,
 				C514AAEB28090856005E459F /* Stuy Schedule */,
 				C514AB0428090896005E459F /* Widget */,
 				C514AAFF28090896005E459F /* Frameworks */,
@@ -132,13 +139,30 @@
 		C514AB0428090896005E459F /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				C514AB14280908B7005E459F /* RegularSchedule.swift */,
 				C514AB0528090896005E459F /* Widget.swift */,
 				C514AB0728090896005E459F /* Widget.intentdefinition */,
 				C514AB0828090896005E459F /* Assets.xcassets */,
 				C514AB0A28090896005E459F /* Info.plist */,
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		C5269F13280F82F900F48AEF /* Schedules */ = {
+			isa = PBXGroup;
+			children = (
+				C5269F1B280F8CC700F48AEF /* data */,
+				C5269F14280F830A00F48AEF /* Period.swift */,
+				C5269F16280F85EA00F48AEF /* Schedule.swift */,
+			);
+			path = Schedules;
+			sourceTree = "<group>";
+		};
+		C5269F1B280F8CC700F48AEF /* data */ = {
+			isa = PBXGroup;
+			children = (
+				C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,12 +175,12 @@
 				C514AAE528090856005E459F /* Sources */,
 				C514AAE628090856005E459F /* Frameworks */,
 				C514AAE728090856005E459F /* Resources */,
-				C514AB1328090896005E459F /* Embed App Extensions */,
+				C5269F28280FBDE100F48AEF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C514AB0E28090896005E459F /* PBXTargetDependency */,
+				C5269F27280FBDE100F48AEF /* PBXTargetDependency */,
 			);
 			name = "Stuy Schedule App";
 			productName = "Stuy Schedule";
@@ -242,10 +266,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5269F17280F85EA00F48AEF /* Schedule.swift in Sources */,
+				C5269F15280F830A00F48AEF /* Period.swift in Sources */,
 				C514AAEF28090856005E459F /* ContentView.swift in Sources */,
 				C514AAED28090856005E459F /* Stuy_ScheduleApp.swift in Sources */,
 				C514AB0C28090896005E459F /* Widget.intentdefinition in Sources */,
-				C514AB15280908B7005E459F /* RegularSchedule.swift in Sources */,
+				C5269F1D280F8CD200F48AEF /* RegularSchedule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,8 +279,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5269F20280F92BB00F48AEF /* Schedule.swift in Sources */,
+				C5269F1F280F92B700F48AEF /* Period.swift in Sources */,
+				C5269F1E280F929D00F48AEF /* RegularSchedule.swift in Sources */,
 				C514AB0B28090896005E459F /* Widget.intentdefinition in Sources */,
-				C514AB162809095A005E459F /* RegularSchedule.swift in Sources */,
 				C514AB0628090896005E459F /* Widget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,10 +290,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C514AB0E28090896005E459F /* PBXTargetDependency */ = {
+		C5269F27280FBDE100F48AEF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C514AAFD28090896005E459F /* WidgetExtension */;
-			targetProxy = C514AB0D28090896005E459F /* PBXContainerItemProxy */;
+			targetProxy = C5269F26280FBDE100F48AEF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -387,7 +415,6 @@
 		C514AAF828090856005E459F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -417,7 +444,6 @@
 		C514AAF928090856005E459F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
