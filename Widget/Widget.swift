@@ -72,22 +72,39 @@ struct widgetSmallView : View {
             let title = period.name
             let timeToMinutes = date.minutes(from: period.endTime) * -1
             
-            VStack {
-                Text("\(title)")
-                    .padding(10.0)
-                    .font(.system(size: 18))
-                Spacer()
-                Text("\(timeToMinutes)")
-                    .foregroundColor(.red)
-                    .font(.system(size: 50))
-                    .fontWeight(.bold)
-                    
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom)
-                Spacer()
-                Spacer()
+            if (period.duration <= 5) || (period.duration == 60) {
+                VStack {
+                    Text("\(title)")
+                        .padding(10.0)
+                        .font(.system(size: 18))
+                    Spacer()
+                    Text("\(timeToMinutes)")
+                        .foregroundColor(.blue)
+                        .font(.system(size: 50))
+                        .fontWeight(.bold)
+                        
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom)
+                    Spacer()
+                    Spacer()
+                }
+            } else {
+                VStack {
+                    Text("\(title)")
+                        .padding(10.0)
+                        .font(.system(size: 18))
+                    Spacer()
+                    Text("\(timeToMinutes)")
+                        .foregroundColor(.red)
+                        .font(.system(size: 50))
+                        .fontWeight(.bold)
+                        
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom)
+                    Spacer()
+                    Spacer()
+                }
             }
-            
         }
     }
 }
@@ -130,14 +147,25 @@ struct widgetMediumView : View {
                         .padding(.bottom, 6.0)
                         .padding(.trailing, 40.0)
                     
-                    Text("\(timeToMinutes)")
-                        .foregroundColor(.red)
-                        .font(.system(size: 50))
-                        .fontWeight(.bold)
+                    if (period.duration <= 5) || (period.duration == 60) {
+                        Text("\(timeToMinutes)")
+                            .foregroundColor(.blue)
+                            .font(.system(size: 50))
+                            .fontWeight(.bold)
 
-                        .multilineTextAlignment(.center)
-                        .padding(.bottom, 6.0)
-                        .padding(.leading, 40.0)
+                            .multilineTextAlignment(.center)
+                            .padding(.bottom, 6.0)
+                            .padding(.leading, 40.0)
+                    } else {
+                        Text("\(timeToMinutes)")
+                            .foregroundColor(.red)
+                            .font(.system(size: 50))
+                            .fontWeight(.bold)
+
+                            .multilineTextAlignment(.center)
+                            .padding(.bottom, 6.0)
+                            .padding(.leading, 40.0)
+                    }
                 }
                 Spacer()
                 Spacer()
@@ -192,8 +220,8 @@ struct widget: Widget {
 struct widget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
+//            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+//                .previewContext(WidgetPreviewContext(family: .systemSmall))
             widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
                 
