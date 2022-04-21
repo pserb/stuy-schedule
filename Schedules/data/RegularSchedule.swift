@@ -75,13 +75,13 @@ struct RegularSchedule {
                                           duration: 41,
                                           name: "Period 8"))
         self.schedule.append(Period(startTime: Calendar.current.date(bySettingHour: 14, minute: 05, second: 0, of: date)!,
-                                          duration: 5,
+                                          duration: 4,
                                           name: "Before Period 9"))
         self.schedule.append(Period(startTime: Calendar.current.date(bySettingHour: 14, minute: 09, second: 0, of: date)!,
                                           duration: 41,
                                           name: "Period 9"))
         self.schedule.append(Period(startTime: Calendar.current.date(bySettingHour: 14, minute: 50, second: 0, of: date)!,
-                                          duration: 5,
+                                          duration: 4,
                                           name: "Before Period 10"))
         self.schedule.append(Period(startTime: Calendar.current.date(bySettingHour: 14, minute: 54, second: 0, of: date)!,
                                           duration: 41,
