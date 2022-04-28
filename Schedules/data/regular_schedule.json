@@ -1,0 +1,105 @@
+{
+  "scheduleType": "regular",
+  "schedule": [
+    {
+      "name": "Before Period 1",
+      "startTime": 700,
+      "duration": 60
+    },
+    {
+      "name": "Period 1",
+      "startTime": 800,
+      "duration": 41
+    },
+    {
+      "name": "Before Period 2",
+      "startTime": 841,
+      "duration": 4
+    },
+    {
+      "name": "Period 2",
+      "startTime": 845,
+      "duration": 41
+    },
+    {
+      "name": "Before Period 3",
+      "startTime": 926,
+      "duration": 5
+    },
+    {
+      "name": "Period 3",
+      "startTime": 931,
+      "duration": 44
+    },
+    {
+      "name": "Before Period 4",
+      "startTime": 1015,
+      "duration": 5
+    },
+    {
+      "name": "Period 4",
+      "startTime": 1020,
+      "duration": 41
+    },
+    {
+      "name": "Before Period 5",
+      "startTime": 1101,
+      "duration": 5
+    },
+    {
+      "name": "Period 5",
+      "startTime": 1106,
+      "duration": 41
+    },
+    {
+      "name": "Before Period 6",
+      "startTime": 1147,
+      "duration": 5
+    },
+    {
+      "name": "Period 6",
+      "startTime": 1152,
+      "duration": 41
+    },
+    {
+      "name": "Before Period 7",
+      "startTime": 1233,
+      "duration": 5
+    },
+    {
+      "name": "Period 7",
+      "startTime": 1238,
+      "duration": 41
+    },
+    {
+      "name": "Before Period 8",
+      "startTime": 1319,
+      "duration": 5
+    },
+    {
+      "name": "Period 8",
+      "startTime": 1324,
+      "duration": 41
+    },
+    {
+      "name": "Before Period 9",
+      "startTime": 1405,
+      "duration": 4
+    },
+    {
+      "name": "Period 9",
+      "startTime": 1409,
+      "duration": 41
+    },
+    {
+      "name": "Before Period 10",
+      "startTime": 1450,
+      "duration": 4
+    },
+    {
+      "name": "Period 10",
+      "startTime": 1454,
+      "duration": 41
+    }
+  ]
+}
