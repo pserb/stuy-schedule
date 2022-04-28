@@ -1,0 +1,560 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C514AAED28090856005E459F /* Stuy_ScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C514AAEC28090856005E459F /* Stuy_ScheduleApp.swift */; };
+		C514AAEF28090856005E459F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C514AAEE28090856005E459F /* ContentView.swift */; };
+		C514AAF128090856005E459F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C514AAF028090856005E459F /* Assets.xcassets */; };
+		C514AAF428090856005E459F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C514AAF328090856005E459F /* Preview Assets.xcassets */; };
+		C514AB0128090896005E459F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C514AB0028090896005E459F /* WidgetKit.framework */; };
+		C514AB0328090896005E459F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C514AB0228090896005E459F /* SwiftUI.framework */; };
+		C514AB0628090896005E459F /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C514AB0528090896005E459F /* Widget.swift */; };
+		C514AB0928090896005E459F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C514AB0828090896005E459F /* Assets.xcassets */; };
+		C514AB0B28090896005E459F /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C514AB0728090896005E459F /* Widget.intentdefinition */; };
+		C514AB0C28090896005E459F /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C514AB0728090896005E459F /* Widget.intentdefinition */; };
+		C5269F15280F830A00F48AEF /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F14280F830A00F48AEF /* Period.swift */; };
+		C5269F1D280F8CD200F48AEF /* RegularSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */; };
+		C5269F1E280F929D00F48AEF /* RegularSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */; };
+		C5269F1F280F92B700F48AEF /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F14280F830A00F48AEF /* Period.swift */; };
+		C5269F25280FBDE100F48AEF /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C514AAFE28090896005E459F /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C54F52732818EDEF0003C307 /* regular_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C54F52722818EDEF0003C307 /* regular_schedule.json */; };
+		C54F52742818EDEF0003C307 /* regular_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C54F52722818EDEF0003C307 /* regular_schedule.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C5269F26280FBDE100F48AEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C514AAE128090856005E459F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C514AAFD28090896005E459F;
+			remoteInfo = WidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C5269F28280FBDE100F48AEF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C5269F25280FBDE100F48AEF /* WidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C514AAE928090856005E459F /* Stuy Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stuy Schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C514AAEC28090856005E459F /* Stuy_ScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stuy_ScheduleApp.swift; sourceTree = "<group>"; };
+		C514AAEE28090856005E459F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C514AAF028090856005E459F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C514AAF328090856005E459F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C514AAFE28090896005E459F /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C514AB0028090896005E459F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		C514AB0228090896005E459F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		C514AB0528090896005E459F /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		C514AB0728090896005E459F /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
+		C514AB0828090896005E459F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C514AB0A28090896005E459F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5269F14280F830A00F48AEF /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSchedule.swift; sourceTree = "<group>"; };
+		C54F52722818EDEF0003C307 /* regular_schedule.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = regular_schedule.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C514AAE628090856005E459F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C514AAFB28090896005E459F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C514AB0328090896005E459F /* SwiftUI.framework in Frameworks */,
+				C514AB0128090896005E459F /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C514AAE028090856005E459F = {
+			isa = PBXGroup;
+			children = (
+				C5269F13280F82F900F48AEF /* Schedules */,
+				C514AAEB28090856005E459F /* Stuy Schedule */,
+				C514AB0428090896005E459F /* Widget */,
+				C514AAFF28090896005E459F /* Frameworks */,
+				C514AAEA28090856005E459F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C514AAEA28090856005E459F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C514AAE928090856005E459F /* Stuy Schedule.app */,
+				C514AAFE28090896005E459F /* WidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C514AAEB28090856005E459F /* Stuy Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				C514AAEC28090856005E459F /* Stuy_ScheduleApp.swift */,
+				C514AAEE28090856005E459F /* ContentView.swift */,
+				C514AAF028090856005E459F /* Assets.xcassets */,
+				C514AAF228090856005E459F /* Preview Content */,
+			);
+			path = "Stuy Schedule";
+			sourceTree = "<group>";
+		};
+		C514AAF228090856005E459F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C514AAF328090856005E459F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C514AAFF28090896005E459F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C514AB0028090896005E459F /* WidgetKit.framework */,
+				C514AB0228090896005E459F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C514AB0428090896005E459F /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				C514AB0528090896005E459F /* Widget.swift */,
+				C514AB0728090896005E459F /* Widget.intentdefinition */,
+				C514AB0828090896005E459F /* Assets.xcassets */,
+				C514AB0A28090896005E459F /* Info.plist */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		C5269F13280F82F900F48AEF /* Schedules */ = {
+			isa = PBXGroup;
+			children = (
+				C5269F1B280F8CC700F48AEF /* data */,
+				C5269F14280F830A00F48AEF /* Period.swift */,
+			);
+			path = Schedules;
+			sourceTree = "<group>";
+		};
+		C5269F1B280F8CC700F48AEF /* data */ = {
+			isa = PBXGroup;
+			children = (
+				C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */,
+				C54F52722818EDEF0003C307 /* regular_schedule.json */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C514AAE828090856005E459F /* Stuy Schedule App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C514AAF728090856005E459F /* Build configuration list for PBXNativeTarget "Stuy Schedule App" */;
+			buildPhases = (
+				C514AAE528090856005E459F /* Sources */,
+				C514AAE628090856005E459F /* Frameworks */,
+				C514AAE728090856005E459F /* Resources */,
+				C5269F28280FBDE100F48AEF /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5269F27280FBDE100F48AEF /* PBXTargetDependency */,
+			);
+			name = "Stuy Schedule App";
+			productName = "Stuy Schedule";
+			productReference = C514AAE928090856005E459F /* Stuy Schedule.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C514AAFD28090896005E459F /* WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C514AB1028090896005E459F /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
+			buildPhases = (
+				C514AAFA28090896005E459F /* Sources */,
+				C514AAFB28090896005E459F /* Frameworks */,
+				C514AAFC28090896005E459F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetExtension;
+			productName = WidgetExtension;
+			productReference = C514AAFE28090896005E459F /* WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C514AAE128090856005E459F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					C514AAE828090856005E459F = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					C514AAFD28090896005E459F = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+				};
+			};
+			buildConfigurationList = C514AAE428090856005E459F /* Build configuration list for PBXProject "Stuy Schedule App" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C514AAE028090856005E459F;
+			productRefGroup = C514AAEA28090856005E459F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C514AAE828090856005E459F /* Stuy Schedule App */,
+				C514AAFD28090896005E459F /* WidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C514AAE728090856005E459F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C54F52732818EDEF0003C307 /* regular_schedule.json in Resources */,
+				C514AAF428090856005E459F /* Preview Assets.xcassets in Resources */,
+				C514AAF128090856005E459F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C514AAFC28090896005E459F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C514AB0928090896005E459F /* Assets.xcassets in Resources */,
+				C54F52742818EDEF0003C307 /* regular_schedule.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C514AAE528090856005E459F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5269F15280F830A00F48AEF /* Period.swift in Sources */,
+				C514AAEF28090856005E459F /* ContentView.swift in Sources */,
+				C514AAED28090856005E459F /* Stuy_ScheduleApp.swift in Sources */,
+				C514AB0C28090896005E459F /* Widget.intentdefinition in Sources */,
+				C5269F1D280F8CD200F48AEF /* RegularSchedule.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C514AAFA28090896005E459F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5269F1F280F92B700F48AEF /* Period.swift in Sources */,
+				C5269F1E280F929D00F48AEF /* RegularSchedule.swift in Sources */,
+				C514AB0B28090896005E459F /* Widget.intentdefinition in Sources */,
+				C514AB0628090896005E459F /* Widget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C5269F27280FBDE100F48AEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C514AAFD28090896005E459F /* WidgetExtension */;
+			targetProxy = C5269F26280FBDE100F48AEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C514AAF528090856005E459F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C514AAF628090856005E459F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C514AAF828090856005E459F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Stuy Schedule/Preview Content\"";
+				DEVELOPMENT_TEAM = 8H7P69HD3G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App";
+				PRODUCT_NAME = "Stuy Schedule";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C514AAF928090856005E459F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Stuy Schedule/Preview Content\"";
+				DEVELOPMENT_TEAM = 8H7P69HD3G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App";
+				PRODUCT_NAME = "Stuy Schedule";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C514AB1128090896005E459F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8H7P69HD3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App.ScheduleWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C514AB1228090896005E459F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8H7P69HD3G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App.ScheduleWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C514AAE428090856005E459F /* Build configuration list for PBXProject "Stuy Schedule App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C514AAF528090856005E459F /* Debug */,
+				C514AAF628090856005E459F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C514AAF728090856005E459F /* Build configuration list for PBXNativeTarget "Stuy Schedule App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C514AAF828090856005E459F /* Debug */,
+				C514AAF928090856005E459F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C514AB1028090896005E459F /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C514AB1128090896005E459F /* Debug */,
+				C514AB1228090896005E459F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C514AAE128090856005E459F /* Project object */;
+}
