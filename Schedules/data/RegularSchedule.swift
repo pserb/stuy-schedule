@@ -104,4 +104,53 @@ struct RegularSchedule {
 
         return period
     }
+    
+    mutating func getBlock(_ date: Date) -> [String] {
+        let blockData = ["May 3, 2022": ["A1", "Science Testing"],
+                         "May 4, 2022": ["B1", "WL, ELA and Health Testing"],
+                         "May 5, 2022": ["A2", "Math Testing, Music, Art Testing"],
+                         "May 6, 2022": ["B2", "CS, SS Testing and Technology"],
+                         "May 9, 2022": ["A", "Science Testing"],
+                         "May 10, 2022": ["B1", "Science Testing"],
+                         "May 11, 2022": ["A1", "WL, ELA and Health Testing"],
+                         "May 12, 2022": ["B2", "Math Testing, Music, Art Testing"],
+                         "May 13, 2022": ["A2", "CS, SS Testing and Technology"],
+                         "May 16, 2022": ["B", "Science Testing"],
+                         "May 17, 2022": ["A1", "Science Testing"],
+                         "May 18, 2022": ["B1", "WL, ELA and Health Testing"],
+                         "May 19, 2022": ["A2", "Math Testing, Music, Art Testing"],
+                         "May 20, 2022": ["B2", "CS, SS Testing and Technology"],
+                         "May 23, 2022": ["A", "Science Testing"],
+                         "May 24, 2022": ["B1", "Science Testing"],
+                         "May 25, 2022": ["A1", "WL, ELA and Health Testing"],
+                         "May 26, 2022": ["B2", "Math Testing, Music, Art Testing"],
+                         "May 27, 2022": ["A2", "CS, SS Testing and Technology"],
+                         "May 31, 2022": ["B1", "Science Testing"],
+                         "June 2, 2022": ["A1", "Math Testing, Music, Art , Tech"],
+                         "June 3, 2022": ["B2", "WL, ELA, CS, SS and Health Testing"],
+                         "June 6, 2022": ["A2", "Science Testing In Class Finals or Unit Tests"],
+                         "June 7, 2022": ["B1", "WL, ELA, Health In Class Finals or Unit Tests"],
+                         "June 8, 2022": ["A1", "Math, Music, Art In Class Finals or Unit Tests"],
+                         "June 10, 2022": ["B2", "CS, SS, Tech In Class Finals or Unit Tests"],
+                         "June 13, 2022": ["A2", "No Finals/Units Makeup Test Day"],
+                         "June 14, 2022": ["B", "Last Class Day Makeup Test Day"]
+        ]
+        
+        for (key, value) in blockData {
+            if key == date.formatted(date: .long, time: .omitted) {
+                return value
+            }
+        }
+        return ["N/A"]
+//        return Date.now.formatted(date: .long, time: .omitted)
+    }
+    
+    mutating func aOrAn(_ block: String) -> String {
+        for char in block {
+            if (char == "A") {
+                return "an"
+            }
+        }
+        return "a"
+    }
 }

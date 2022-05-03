@@ -34,8 +34,8 @@ struct Provider: IntentTimelineProvider {
         
         let currentDate = calendar.date(bySettingHour: hour, minute: minute, second: 0, of: date)!
         
-        // 12 hrs
-        for minuteOffset in stride(from: 0, to: 60 * 24, by: 1) {
+        // 18 hrs
+        for minuteOffset in stride(from: 0, to: 60 * 18, by: 1) {
             let entryDate = calendar.date(byAdding: .minute, value: minuteOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, configuration: configuration)
             entries.append(entry)
@@ -58,16 +58,48 @@ struct widgetSmallView : View {
         let date = entry.date
         
         let cal = Calendar.current
+        let todayData = regularSchedule.getBlock(date)
+        let aOrAn = regularSchedule.aOrAn(todayData[0])
         
-        if (cal.component(.hour, from: date) < 7) ||
-            ((cal.component(.hour, from: date) == 15) && (cal.component(.minute, from: date) >= 35)) ||
-            (cal.component(.hour, from: date) >= 16) {
-            VStack {
-                Text("Relax")
-                    .font(.system(size: 30))
+        // if it is after school, display tomorrow data
+        if ((cal.component(.hour, from: date) == 15) && (cal.component(.minute, from: date) >= 35)) ||
+            ((cal.component(.hour, from: date) >= 16) && (cal.component(.hour, from: date) <= 24)) {
+            
+            let tmr = cal.date(byAdding: .day, value: 1, to: date)!
+            let tmrData = regularSchedule.getBlock(tmr)
+            let aOrAn = regularSchedule.aOrAn(tmrData[0])
+            
+            if tmrData[0] == "N/A" {
+                Text("No School Tomorrow")
+                    .font(.system(size: 20))
                     .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+            } else {
+                Text("Tomorrow is \(aOrAn) \(tmrData[0]) day")
+                    .font(.system(size: 20))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
             }
-        } else {
+        }
+        // if it is before school, display today data
+        else if ((cal.component(.hour, from: date) < 7) && (cal.component(.hour, from: date) >= 0)) {
+            
+            VStack {
+                if todayData[0] == "N/A" {
+                    Text("No School Today")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                } else {
+                    Text("Today is \(aOrAn) \(todayData[0]) day")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                }
+            }
+        }
+        
+        else {
             let period = regularSchedule.getPeriod(date)
             let title = period.name
             let timeToMinutes = date.minutes(from: period.endTime) * -1
@@ -85,6 +117,9 @@ struct widgetSmallView : View {
                         
                         .multilineTextAlignment(.center)
                         .padding(.bottom)
+                    Text("\(todayData[0])")
+                        .fontWeight(.bold)
+                        .font(.system(size: 16))
                     Spacer()
                     Spacer()
                 }
@@ -101,6 +136,9 @@ struct widgetSmallView : View {
                         
                         .multilineTextAlignment(.center)
                         .padding(.bottom)
+                    Text("\(todayData[0])")
+                        .fontWeight(.bold)
+                        .font(.system(size: 16))
                     Spacer()
                     Spacer()
                 }
@@ -116,16 +154,52 @@ struct widgetMediumView : View {
         let date = entry.date
 
         let cal = Calendar.current
-    
-        if (cal.component(.hour, from: date) < 7) ||
-            ((cal.component(.hour, from: date) == 15) && (cal.component(.minute, from: date) >= 35)) ||
-            (cal.component(.hour, from: date) >= 16) {
-            VStack {
-                Text("Relax 🅱️")
-                    .font(.system(size: 40))
+        
+//        let date = cal.date(byAdding: .hour, value: 10, to: Date.now)!
+        
+        let todayData = regularSchedule.getBlock(date)
+        let aOrAn = regularSchedule.aOrAn(todayData[0])
+        
+        // if it is after school, display tomorrow data
+        if ((cal.component(.hour, from: date) == 15) && (cal.component(.minute, from: date) >= 35)) ||
+            ((cal.component(.hour, from: date) >= 16) && (cal.component(.hour, from: date) <= 24)) {
+            
+            let tmr = cal.date(byAdding: .day, value: 1, to: date)!
+            let tmrData = regularSchedule.getBlock(tmr)
+            let aOrAn = regularSchedule.aOrAn(tmrData[0])
+            
+            if tmrData[0] == "N/A" {
+                Text("No School Tomorrow")
+                    .font(.system(size: 20))
                     .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+            } else {
+                Text("Tomorrow is \(aOrAn) \(tmrData[0]) day with\n \(tmrData[1])")
+                    .font(.system(size: 20))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
             }
-        } else {
+        }
+        // if it is before school, display today data
+        else if ((cal.component(.hour, from: date) < 7) && (cal.component(.hour, from: date) >= 0)) {
+            
+            VStack {
+                if todayData[0] == "N/A" {
+                    Text("No School Today")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                } else {
+                    Text("Today is \(aOrAn) \(todayData[0]) day with \(todayData[1])")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                }
+            }
+        }
+        
+        // otherwise do schedule stuff
+        else {
             let period = regularSchedule.getPeriod(date)
             let title = period.name
             let timeToMinutes = date.minutes(from: period.endTime) * -1
@@ -167,6 +241,10 @@ struct widgetMediumView : View {
                             .padding(.leading, 40.0)
                     }
                 }
+                Text("\(todayData[0])")
+                    .fontWeight(.bold)
+                    .padding(.bottom, 5.0)
+                    .font(.system(size: 20))
                 Spacer()
                 Spacer()
                 Spacer()
