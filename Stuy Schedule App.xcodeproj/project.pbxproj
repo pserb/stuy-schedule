@@ -66,6 +66,8 @@
 		C5269F14280F830A00F48AEF /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		C5269F1C280F8CD200F48AEF /* RegularSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSchedule.swift; sourceTree = "<group>"; };
 		C54F52722818EDEF0003C307 /* regular_schedule.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = regular_schedule.json; sourceTree = "<group>"; };
+		C564C27428321937002C92A6 /* Stuy Schedule App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stuy Schedule App.entitlements"; sourceTree = "<group>"; };
+		C564C27528321937002C92A6 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,8 @@
 		C514AAE028090856005E459F = {
 			isa = PBXGroup;
 			children = (
+				C564C27528321937002C92A6 /* WidgetExtension.entitlements */,
+				C564C27428321937002C92A6 /* Stuy Schedule App.entitlements */,
 				C5269F13280F82F900F48AEF /* Schedules */,
 				C514AAEB28090856005E459F /* Stuy Schedule */,
 				C514AB0428090896005E459F /* Widget */,
@@ -417,6 +421,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Stuy Schedule App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stuy Schedule/Preview Content\"";
@@ -435,6 +440,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1";
 				PRODUCT_NAME = "Stuy Schedule";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,6 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Stuy Schedule App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stuy Schedule/Preview Content\"";
@@ -464,6 +471,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1";
 				PRODUCT_NAME = "Stuy Schedule";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -475,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8H7P69HD3G;
@@ -491,6 +500,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1.ScheduleWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -502,6 +512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8H7P69HD3G;
@@ -518,6 +529,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1.ScheduleWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
