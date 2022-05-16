@@ -142,7 +142,6 @@ struct RegularSchedule {
             }
         }
         return ["N/A"]
-//        return Date.now.formatted(date: .long, time: .omitted)
     }
     
     mutating func aOrAn(_ block: String) -> String {
