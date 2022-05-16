@@ -7,11 +7,30 @@
 
 import SwiftUI
 
+// function returns whether current time is school hours
+// -1: before school
+// 0: during school
+// 1: after school
+func schoolHours(_ date: Date) -> Int {
+    let startTime = Calendar.current.date(bySettingHour: 7, minute: 59, second: 59, of: date)!
+    let endTime = Calendar.current.date(bySettingHour: 15, minute: 35, second: 00, of: date)!
+    
+    if date <= startTime {
+        return -1
+    } else if date > startTime && date < endTime {
+        return 0
+    } else {
+        return 1
+    }
+}
+
 struct ContentView: View {
     
+    @State var date = Date()
     @State var regularSchedule = RegularSchedule()
-    let date = Date()
-    let cal = Calendar.current
+    @State var schoolTime = schoolHours(Date())
+    
+//    @State public var WidgetColorChoice = .system
     
     var body: some View {
         
@@ -20,26 +39,8 @@ struct ContentView: View {
                 .padding()
             Text("\(Date.now.formatted(date: .long, time: .omitted))")
                 .padding()
-        
-            if ((cal.component(.hour, from: date) == 15) && (cal.component(.minute, from: date) >= 35)) ||
-                ((cal.component(.hour, from: date) >= 16) && (cal.component(.hour, from: date) <= 24)) {
-                
-                let tmr = cal.date(byAdding: .day, value: 1, to: date)!
-                let tmrData = regularSchedule.getBlock(tmr)
-                let aOrAn = regularSchedule.aOrAn(tmrData[0])
-                
-                if tmrData[0] == "N/A" {
-                    Text("No School Today")
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                } else {
-                    Text("Tomorrow is \(aOrAn) \(tmrData[0]) day with \(tmrData[1])")
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                }
-            }
-            else if ((cal.component(.hour, from: date) < 7) && (cal.component(.hour, from: date) >= 0)) {
-                
+            
+            if schoolTime == -1 || schoolTime == 0 {
                 let todayData = regularSchedule.getBlock(date)
                 let aOrAn = regularSchedule.aOrAn(todayData[0])
                 
@@ -52,8 +53,23 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                 }
+            } else if schoolTime == 1 {
+                let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+                let tomorrowData = regularSchedule.getBlock(tomorrow)
+                let aOrAnTomorrow = regularSchedule.aOrAn(tomorrowData[0])
+                
+                if tomorrowData[0] == "N/A" {
+                    Text("No School Tomorrow")
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                } else {
+                    Text("Tomorrow is \(aOrAnTomorrow) \(tomorrowData[0]) day with \(tomorrowData[1])")
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                }
             }
             
+//            Pickerq
         }
     }
 }
