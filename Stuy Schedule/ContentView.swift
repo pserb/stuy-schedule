@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+extension UIScreen {
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
+}
+
 // function returns whether current time is school hours
 // -1: before school
 // 0: during school
@@ -35,41 +41,113 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            Text("Don't forget to add the widget!")
-                .padding()
-            Text("\(Date.now.formatted(date: .long, time: .omitted))")
-                .padding()
-            
-            if schoolTime == -1 || schoolTime == 0 {
-                let todayData = regularSchedule.getBlock(date)
-                let aOrAn = regularSchedule.aOrAn(todayData[0])
+        
+            VStack {
+                Text("Don't forget to add the widget!")
+                    .padding()
                 
-                if todayData[0] == "N/A" {
-                    Text("No School Today")
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                } else {
-                    Text("Today is \(aOrAn) \(todayData[0]) day with \(todayData[1])")
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                }
-            } else if schoolTime == 1 {
-                let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: date)!
-                let tomorrowData = regularSchedule.getBlock(tomorrow)
-                let aOrAnTomorrow = regularSchedule.aOrAn(tomorrowData[0])
-                
-                if tomorrowData[0] == "N/A" {
-                    Text("No School Tomorrow")
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                } else {
-                    Text("Tomorrow is \(aOrAnTomorrow) \(tomorrowData[0]) day with \(tomorrowData[1])")
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
+                if schoolTime == -1 || schoolTime == 0 {
+                    let todayData = regularSchedule.getBlock(date)
+                    let aOrAn = regularSchedule.aOrAn(todayData[0])
+                    
+                    if todayData[0] == "N/A" {
+                        Text("No School Today")
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                    } else {
+                        Text("Today is \(aOrAn) \(todayData[0]) day with \(todayData[1])")
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                    }
+                } else if schoolTime == 1 {
+                    let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+                    let tomorrowData = regularSchedule.getBlock(tomorrow)
+                    let aOrAnTomorrow = regularSchedule.aOrAn(tomorrowData[0])
+                    
+                    if tomorrowData[0] == "N/A" {
+                        Text("No School Tomorrow")
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                    } else {
+                        Text("Tomorrow is \(aOrAnTomorrow) \(tomorrowData[0]) day with \(tomorrowData[1])")
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                    }
                 }
             }
+        
+            Text("Alternate App Icons: ")
+                .fontWeight(.bold)
+                .font(.system(size: 25.0))
+                .padding(.top, 10.0)
+                .padding(.bottom, 5.0)
+                .multilineTextAlignment(.center)
             
-//            Pickerq
+            // icon picker
+            Button(action: {
+                    UIApplication.shared.setAlternateIconName("BlueAlt") { (error) in
+                        //
+                    }
+                }, label: {
+                Text("Swap to blue")
+                        .padding(.horizontal, 55.0)
+                Image("blue")
+                        .resizable()
+                        .frame(width: 100.0, height: 100.0)
+                        .multilineTextAlignment(.trailing)
+                })
+            .padding()
+            .frame(width: UIScreen.screenWidth - 40.0)
+            .background(.regularMaterial)
+            
+            Button(action: {
+                    UIApplication.shared.setAlternateIconName("Dark") { (error) in
+                        //
+                    }
+                }, label: {
+                    Text("Swap to dark")
+                        .padding(.horizontal, 55.0)
+                Image("dark")
+                    .resizable()
+                    .frame(width: 100.0, height: 100.0)
+                    .multilineTextAlignment(.trailing)
+            })
+            .padding()
+            .frame(width: UIScreen.screenWidth - 40.0)
+            .background(.regularMaterial)
+            
+            
+            Button(action: {
+                    UIApplication.shared.setAlternateIconName("Red") { (error) in
+                        //
+                    }
+                }, label: {
+                Text("Swap to red")
+                        .padding(.horizontal, 59.0)
+                Image("red")
+                        .resizable()
+                        .frame(width: 100.0, height: 100.0)
+                        .multilineTextAlignment(.trailing)
+            })
+            .padding()
+            .frame(width: UIScreen.screenWidth - 40.0)
+            .background(.regularMaterial)
+            
+            Button(action: {
+                    UIApplication.shared.setAlternateIconName("Green") { (error) in
+                        //
+                    }
+                }, label: {
+                Text("Swap to green")
+                        .padding(.horizontal, 50.0)
+                Image("green")
+                        .resizable()
+                        .frame(width: 100.0, height: 100.0)
+                        .multilineTextAlignment(.trailing)
+            })
+            .padding()
+            .frame(width: UIScreen.screenWidth - 40.0)
+            .background(.regularMaterial)
         }
     }
 }
