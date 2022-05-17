@@ -212,8 +212,8 @@ struct Provider: IntentTimelineProvider {
         
         let currentDate = calendar.date(bySettingHour: hour, minute: minute, second: 0, of: date)!
         
-        // 18 hrs, ideally 24
-        for minuteOffset in stride(from: 0, to: 60 * 24, by: 1) {
+        // TODO: 16 hrs, ideally 24
+        for minuteOffset in stride(from: 0, to: 60 * 16, by: 1) {
             let entryDate = calendar.date(byAdding: .minute, value: minuteOffset, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, configuration: configuration)
             entries.append(entry)
