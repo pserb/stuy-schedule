@@ -30,17 +30,34 @@ func schoolHours(_ date: Date) -> Int {
     }
 }
 
+// fucntion generates alternate app icon buttons
+@ViewBuilder func generateIconButton(color: String, horizontalPadding: CGFloat) -> some View {
+    Button(action: {
+            UIApplication.shared.setAlternateIconName(color) { (error) in
+                //
+            }
+        }, label: {
+        Text("Swap to \(color)")
+                .padding(.horizontal, horizontalPadding)
+        Image("\(color.lowercased())")
+                .resizable()
+                .frame(width: 100.0, height: 100.0)
+                .multilineTextAlignment(.trailing)
+    })
+    .padding()
+    .frame(width: UIScreen.screenWidth - 40.0)
+    .background(.regularMaterial)
+}
+
 struct ContentView: View {
     
     @State var date = Date()
     @State var regularSchedule = RegularSchedule()
     @State var schoolTime = schoolHours(Date())
     
-//    @State public var WidgetColorChoice = .system
-    
     var body: some View {
         
-        VStack {
+        ScrollView {
         
             VStack {
                 Text("Don't forget to add the widget!")
@@ -84,13 +101,15 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
             
             // icon picker
+
+            // blue is a special case
             Button(action: {
                     UIApplication.shared.setAlternateIconName("BlueAlt") { (error) in
                         //
                     }
                 }, label: {
                 Text("Swap to blue")
-                        .padding(.horizontal, 55.0)
+                        .padding(.horizontal, 57.0)
                 Image("blue")
                         .resizable()
                         .frame(width: 100.0, height: 100.0)
@@ -100,55 +119,11 @@ struct ContentView: View {
             .frame(width: UIScreen.screenWidth - 40.0)
             .background(.regularMaterial)
             
-            Button(action: {
-                    UIApplication.shared.setAlternateIconName("Dark") { (error) in
-                        //
-                    }
-                }, label: {
-                    Text("Swap to dark")
-                        .padding(.horizontal, 55.0)
-                Image("dark")
-                    .resizable()
-                    .frame(width: 100.0, height: 100.0)
-                    .multilineTextAlignment(.trailing)
-            })
-            .padding()
-            .frame(width: UIScreen.screenWidth - 40.0)
-            .background(.regularMaterial)
-            
-            
-            Button(action: {
-                    UIApplication.shared.setAlternateIconName("Red") { (error) in
-                        //
-                    }
-                }, label: {
-                Text("Swap to red")
-                        .padding(.horizontal, 59.0)
-                Image("red")
-                        .resizable()
-                        .frame(width: 100.0, height: 100.0)
-                        .multilineTextAlignment(.trailing)
-            })
-            .padding()
-            .frame(width: UIScreen.screenWidth - 40.0)
-            .background(.regularMaterial)
-            
-            Button(action: {
-                    UIApplication.shared.setAlternateIconName("Green") { (error) in
-                        //
-                    }
-                }, label: {
-                Text("Swap to green")
-                        .padding(.horizontal, 50.0)
-                Image("green")
-                        .resizable()
-                        .frame(width: 100.0, height: 100.0)
-                        .multilineTextAlignment(.trailing)
-            })
-            .padding()
-            .frame(width: UIScreen.screenWidth - 40.0)
-            .background(.regularMaterial)
+            generateIconButton(color: "Dark", horizontalPadding: 56.0)
+            generateIconButton(color: "Red", horizontalPadding: 59.0)
+            generateIconButton(color: "Green", horizontalPadding: 50.0)
         }
+        .padding(20.0)
     }
 }
 
