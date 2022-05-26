@@ -1,0 +1,116 @@
+{
+  "scheduleType": "conference",
+  "schedule": [
+    {
+      "name": "Before Period 1",
+      "startTime": "7:00",
+      "duration": 60
+    },
+    {
+      "name": "Period 1",
+      "startTime": "8:00",
+      "duration": 37
+    },
+    {
+      "name": "Before Period 2",
+      "startTime": "8:37",
+      "duration": 4
+    },
+    {
+      "name": "Period 2",
+      "startTime": "8:41",
+      "duration": 37
+    },
+    {
+      "name": "Before Period 3",
+      "startTime": "9:18",
+      "duration": 4
+    },
+    {
+      "name": "Period 3",
+      "startTime": "9:22",
+      "duration": 37
+    },
+    {
+      "name": "Before Period 4",
+      "startTime": "9:59",
+      "duration": 4
+    },
+    {
+      "name": "Period 4",
+      "startTime": "10:03",
+      "duration": 37
+    },
+    {
+      "name": "Before Period 5",
+      "startTime": "10:40",
+      "duration": 4
+    },
+    {
+      "name": "Period 5",
+      "startTime": "10:44",
+      "duration": 37
+    },
+    {
+      "name": "Before Period 6",
+      "startTime": "11:21",
+      "duration": 4
+    },
+    {
+      "name": "Period 6",
+      "startTime": "11:25",
+      "duration": 37
+    },
+    {
+      "name": "Before Period 7",
+      "startTime": "12:02",
+      "duration": 4
+    },
+    {
+      "name": "Period 7",
+      "startTime": "12:06",
+      "duration": 37
+    },
+    {
+      "name": "Before Period 8",
+      "startTime": "12:43",
+      "duration": 4
+    },
+    {
+      "name": "Period 8",
+      "startTime": "12:47",
+      "duration": 37
+    },
+    {
+      "name": "Before Period 9",
+      "startTime": "13:24",
+      "duration": 4
+    },
+    {
+      "name": "Period 9",
+      "startTime": "13:28",
+      "duration": 37
+    },
+    {
+      "name": "Before Period 10",
+      "startTime": "14:05",
+      "duration": 4
+    },
+    {
+      "name": "Period 10",
+      "startTime": "14:09",
+      "duration": 37
+    },
+    {
+      "name": "Before Meeting",
+      "startTime": "14:46",
+      "duration": 4
+    },
+    {
+      "name": "Meeting",
+      "startTime": "14:50",
+      "duration": 40
+    }
+  ]
+}
+

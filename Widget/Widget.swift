@@ -9,8 +9,6 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-var regularSchedule = RegularSchedule()
-
 // function returns whether current time is school hours
 // -1: before school
 // 0: during school
@@ -30,6 +28,7 @@ func schoolHours(_ date: Date) -> Int {
 
 // view for before school hours
 @ViewBuilder func beforeSchool(_ date: Date, viewSize: String) -> some View {
+    var regularSchedule = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, date)
     let todayData = regularSchedule.getBlock(date)
     let aOrAn = regularSchedule.aOrAn(todayData[0])
     
@@ -56,12 +55,14 @@ func schoolHours(_ date: Date) -> Int {
                 .font(.system(size: 25))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
+                .padding(.horizontal, 15.0)
         }
     }
 }
 
 // view for school hours
 @ViewBuilder func duringSchool(_ date: Date, viewSize: String) -> some View {
+    var regularSchedule = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, date)
     let todayData = regularSchedule.getBlock(date)
     
     // if there is no school today
@@ -159,6 +160,7 @@ func schoolHours(_ date: Date) -> Int {
 
 // view for after school hours
 @ViewBuilder func afterSchool(_ date: Date, viewSize: String) -> some View {
+    var regularSchedule = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, date)
     let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: date)!
     let tomorrowData = regularSchedule.getBlock(tomorrow)
     let aOrAn = regularSchedule.aOrAn(tomorrowData[0])
@@ -186,6 +188,7 @@ func schoolHours(_ date: Date) -> Int {
                 .font(.system(size: 25))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
+                .padding(.horizontal, 15.0)
         }
     }
 }
