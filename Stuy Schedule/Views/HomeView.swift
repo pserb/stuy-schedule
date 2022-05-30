@@ -27,15 +27,8 @@ import WidgetKit
 
 struct HomeView: View {
     
-//    var date = Calendar.current.date(bySettingHour: 9, minute: 41, second: 00, of: Date())!
-    
     @State var currentTime = Date().formatted(date: .omitted, time: .standard)
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-//    var dateFormatter: DateFormatter {
-//            let fmtr = DateFormatter()
-//            fmtr.dateFormat = "LLLL dd, hh:mm:ss a"
-//            return fmtr
-//    }
     
     @State var timeFromMinutes: Int = 0
     @State var period: Period = Period(startTime: Date(), duration: 0, name: "")
@@ -88,15 +81,14 @@ struct HomeView: View {
             Text("Current Period:")
                 .padding(.top, 50)
                 .multilineTextAlignment(.center)
-                .onReceive(timer) { _ in
-                    self.period = scheduleChoice.getPeriod(Date())
-                }
+            
             Text("\(period.name)")
                 .font(.system(size: 35))
                 .bold()
                 .padding(.bottom, 20)
                 .multilineTextAlignment(.center)
                 .onReceive(timer) { _ in
+                    scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
                     self.period = scheduleChoice.getPeriod(Date())
                 }
             
@@ -106,10 +98,7 @@ struct HomeView: View {
                     Text("Minutes Into:")
                         .multilineTextAlignment(.center)
                         .padding(.horizontal,20.0)
-                        .onReceive(timer) { _ in
-                            let period = scheduleChoice.getPeriod(Date())
-                            self.timeFromMinutes = Date().minutes(from: period.startTime)
-                        }
+                    
                     Text("\(timeFromMinutes)")
                         .font(.system(size: 50))
                         .bold()
@@ -117,6 +106,7 @@ struct HomeView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal,20.0)
                         .onReceive(timer) { _ in
+                            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
                             let period = scheduleChoice.getPeriod(Date())
                             self.timeFromMinutes = Date().minutes(from: period.startTime)
                         }
@@ -129,10 +119,7 @@ struct HomeView: View {
                     Text("Minutes to End:")
                         .multilineTextAlignment(.center)
                         .padding(.horizontal,20.0)
-                        .onReceive(timer) { _ in
-                            let period = scheduleChoice.getPeriod(Date())
-                            self.timeToMinutes = Date().minutes(from: period.endTime) * -1
-                        }
+                    
                     Text("\(timeToMinutes)")
                         .font(.system(size: 50))
                         .bold()
@@ -140,6 +127,7 @@ struct HomeView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal,20.0)
                         .onReceive(timer) { _ in
+                            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
                             let period = scheduleChoice.getPeriod(Date())
                             self.timeToMinutes = Date().minutes(from: period.endTime) * -1
                         }

@@ -38,6 +38,7 @@ func schoolHours(_ date: Date) -> Int {
                 .font(.system(size: 20))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
+                .padding()
         } else if viewSize == "medium" {
             Text("No School Today")
                 .font(.system(size: 25))
@@ -72,6 +73,7 @@ func schoolHours(_ date: Date) -> Int {
                 .font(.system(size: 20))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
+                .padding()
         } else if viewSize == "medium" {
             Text("No School Today")
                 .font(.system(size: 25))
@@ -304,9 +306,9 @@ struct widgetEntryView : View {
         case .systemMedium:
             widgetMediumView(entry: entry)
         case .systemLarge:
-            Text("Lorge")
+            Text("LargeView")
         default:
-            Text("📮")
+            Text("DefaultView")
         }
     }
 }
@@ -331,8 +333,8 @@ struct widget_Previews: PreviewProvider {
         Group {
             widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
-            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
+//            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+//                .previewContext(WidgetPreviewContext(family: .systemMedium))
                 
         }
     }
