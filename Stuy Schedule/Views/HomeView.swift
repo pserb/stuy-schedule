@@ -8,33 +8,42 @@
 import SwiftUI
 import WidgetKit
 
-//// function returns whether current time is school hours
-//// -1: before school
-//// 0: during school
-//// 1: after school
-//func schoolHours(_ date: Date) -> Int {
-//    let startTime = Calendar.current.date(bySettingHour: 7, minute: 59, second: 59, of: date)!
-//    let endTime = Calendar.current.date(bySettingHour: 15, minute: 35, second: 00, of: date)!
-//
-//    if date <= startTime {
-//        return -1
-//    } else if date > startTime && date < endTime {
-//        return 0
-//    } else {
-//        return 1
-//    }
-//}
+var scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
+
+@ViewBuilder func scheduleButton(schedule: String) -> some View {
+    if #available(iOS 15.0, *) {
+        Button(action: {
+            ScheduleChoice.scheduleChoice = schedule
+            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
+        }, label: {
+            Image(systemName: "rectangle.2.swap")
+            Text("Swap to \(ScheduleChoice.getName(name: schedule))")
+//                .padding(.trailing, 20)
+        })
+        .padding(.all, 10)
+        .padding(.horizontal, 10)
+        .background(.regularMaterial)
+    } else {
+        Button(action: {
+            ScheduleChoice.scheduleChoice = schedule
+            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
+        }, label: {
+            Image(systemName: "rectangle.2.swap")
+            Text("Swap to \(ScheduleChoice.getName(name: schedule))")
+        })
+    }
+}
+
+let formatter = DateFormatter()
 
 struct HomeView: View {
     
-    @State var currentTime = Date().formatted(date: .omitted, time: .standard)
+    @State var currentTime = formatter.string(from: Date())
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @State var timeFromMinutes: Int = 0
     @State var period: Period = Period(startTime: Date(), duration: 0, name: "")
     @State var timeToMinutes: Int = 0
-
-    @State var scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
 
     
     var body: some View {
@@ -43,34 +52,15 @@ struct HomeView: View {
             
             Text("Schedule choice:")
                 .padding(.top)
-            Text("\(ScheduleChoice.description)")
+            Text("\(ScheduleChoice.getName(name: ScheduleChoice.scheduleChoice))")
                 .bold()
                 .font(.system(size: 20))
                 .padding(.bottom)
             
             VStack {
-                Button(action: {
-                        ScheduleChoice.scheduleChoice = "regular_schedule"
-                        scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
-                    }, label: {
-                        Image(systemName: "rectangle.2.swap")
-                        Text("Swap to Regular Schedule")
-                            .padding(.trailing, 20)
-                    })
-                .padding()
-                .padding(.horizontal, 12)
-                .background(.regularMaterial)
-
-                Button(action: {
-                        ScheduleChoice.scheduleChoice = "conference_schedule"
-                        scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
-                    }, label: {
-                        Image(systemName: "rectangle.2.swap")
-                            .padding(.leading, 13)
-                        Text("Swap to Conference Schedule")
-                    })
-                .padding()
-                .background(.regularMaterial)
+                scheduleButton(schedule: "regular_schedule")
+                scheduleButton(schedule: "conference_schedule")
+                scheduleButton(schedule: "homeroom_schedule")
             }
             
             Text("Don't forget to add the widget!")
@@ -81,8 +71,8 @@ struct HomeView: View {
             Text("Current Period:")
                 .padding(.top, 50)
                 .multilineTextAlignment(.center)
-            
-            Text("\(period.name)")
+            // SDFHSFOSJFPSOFJSPOFJSFDPOSDFJOPSFJSDPFOSPDOFJSDFPOSJDFPSODFJSPDFOJ
+            Text("Period 3")
                 .font(.system(size: 35))
                 .bold()
                 .padding(.bottom, 20)
@@ -98,8 +88,8 @@ struct HomeView: View {
                     Text("Minutes Into:")
                         .multilineTextAlignment(.center)
                         .padding(.horizontal,20.0)
-                    
-                    Text("\(timeFromMinutes)")
+                    // SDFHSFOSJFPSOFJSPOFJSFDPOSDFJOPSFJSDPFOSPDOFJSDFPOSJDFPSODFJSPDFOJ
+                    Text("10")
                         .font(.system(size: 50))
                         .bold()
                         .foregroundColor(.green)
@@ -119,8 +109,8 @@ struct HomeView: View {
                     Text("Minutes to End:")
                         .multilineTextAlignment(.center)
                         .padding(.horizontal,20.0)
-                    
-                    Text("\(timeToMinutes)")
+                    // SDFHSFOSJFPSOFJSPOFJSFDPOSDFJOPSFJSDPFOSPDOFJSDFPOSJDFPSODFJSPDFOJ
+                    Text("34")
                         .font(.system(size: 50))
                         .bold()
                         .foregroundColor(.red)
@@ -135,18 +125,19 @@ struct HomeView: View {
                 Spacer()
             }
             .padding(.bottom, 10)
-            
-            Text("\(currentTime)")
+            // SDFHSFOSJFPSOFJSPOFJSFDPOSDFJOPSFJSDPFOSPDOFJSDFPOSJDFPSODFJSPDFOJ
+            Text("9:41:00 AM")
                 .bold()
                 .font(.system(size: 20))
                 .onReceive(timer) { _ in
-                    self.currentTime = Date().formatted(date: .omitted, time: .standard)
+                    formatter.timeStyle = .medium
+                    self.currentTime = formatter.string(from: Date())
                 }
             
 
         
             Text("Created by Paul Serbanescu")
-                .padding(.top, 100)
+                .padding(.top, 80)
         }
         .padding(20.0)
     }

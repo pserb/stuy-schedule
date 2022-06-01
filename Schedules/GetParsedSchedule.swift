@@ -109,8 +109,11 @@ let blockData =
 "June 14, 2022": ["A", "Last Class Day Makeup Test Day"]
 ]
         
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        
         for (key, value) in blockData {
-            if key == date.formatted(date: .long, time: .omitted) {
+            if key == formatter.string(from: date) {
                 return value
             }
         }

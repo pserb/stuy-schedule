@@ -34,6 +34,8 @@
 		C5CE1F4528353750005A95E4 /* ParsePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CE1F4328353750005A95E4 /* ParsePeriod.swift */; };
 		C5CE1F4A283539F1005A95E4 /* GetParsedSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CE1F49283539F1005A95E4 /* GetParsedSchedule.swift */; };
 		C5CE1F4B283539F1005A95E4 /* GetParsedSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CE1F49283539F1005A95E4 /* GetParsedSchedule.swift */; };
+		C5F05E5B28472B4200E43284 /* homeroom_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C5F05E5A28472B4200E43284 /* homeroom_schedule.json */; };
+		C5F05E5C28472B4200E43284 /* homeroom_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C5F05E5A28472B4200E43284 /* homeroom_schedule.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,7 @@
 		C5CE1F40283536DE005A95E4 /* ParseSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseSchedule.swift; sourceTree = "<group>"; };
 		C5CE1F4328353750005A95E4 /* ParsePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsePeriod.swift; sourceTree = "<group>"; };
 		C5CE1F49283539F1005A95E4 /* GetParsedSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetParsedSchedule.swift; sourceTree = "<group>"; };
+		C5F05E5A28472B4200E43284 /* homeroom_schedule.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = homeroom_schedule.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,7 @@
 			children = (
 				C54F52722818EDEF0003C307 /* regular_schedule.json */,
 				C5CE1F3D283526A1005A95E4 /* conference_schedule.json */,
+				C5F05E5A28472B4200E43284 /* homeroom_schedule.json */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -281,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5CE1F3E283526A1005A95E4 /* conference_schedule.json in Resources */,
+				C5F05E5B28472B4200E43284 /* homeroom_schedule.json in Resources */,
 				C54F52732818EDEF0003C307 /* regular_schedule.json in Resources */,
 				C514AAF428090856005E459F /* Preview Assets.xcassets in Resources */,
 				C514AAF128090856005E459F /* Assets.xcassets in Resources */,
@@ -291,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5F05E5C28472B4200E43284 /* homeroom_schedule.json in Resources */,
 				C5CE1F3F283526A1005A95E4 /* conference_schedule.json in Resources */,
 				C514AB0928090896005E459F /* Assets.xcassets in Resources */,
 				C54F52742818EDEF0003C307 /* regular_schedule.json in Resources */,
@@ -392,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -446,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -483,7 +489,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1";
 				PRODUCT_NAME = "Stuy Schedule";
 				SUPPORTS_MACCATALYST = YES;
@@ -520,7 +526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1";
 				PRODUCT_NAME = "Stuy Schedule";
 				SUPPORTS_MACCATALYST = YES;
@@ -548,7 +554,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1.ScheduleWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -577,7 +583,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1.ScheduleWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

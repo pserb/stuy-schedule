@@ -15,22 +15,41 @@ extension UIScreen {
 }
 
 // fucntion generates alternate app icon buttons
-@ViewBuilder func generateIconButton(color: String, horizontalPadding: CGFloat) -> some View {
-    Button(action: {
+@ViewBuilder func generateIconButton(color: String) -> some View {
+    if #available(iOS 15.0, *) {
+        Button(action: {
             UIApplication.shared.setAlternateIconName(color) { (error) in
                 //
             }
         }, label: {
-        Text("Swap to \(color)")
-                .padding(.horizontal, horizontalPadding)
-        Image("\(color.lowercased())")
+            Spacer()
+            Text("Swap to \(color)")
+            Spacer()
+            Image("\(color.lowercased())")
                 .resizable()
                 .frame(width: 100.0, height: 100.0)
                 .multilineTextAlignment(.trailing)
-    })
-    .padding()
-    .frame(width: UIScreen.screenWidth - 40.0)
-    .background(.regularMaterial)
+        })
+        .padding()
+        .frame(width: UIScreen.screenWidth - 40.0)
+        .background(.regularMaterial)
+    } else {
+        // Fallback on earlier versions
+        Button(action: {
+            UIApplication.shared.setAlternateIconName(color) { (error) in
+                //
+            }
+        }, label: {
+            Spacer()
+            Text("Swap to \(color)")
+            Spacer()
+            Image("\(color.lowercased())")
+                .resizable()
+                .frame(width: 100.0, height: 100.0)
+        })
+        .padding()
+        .frame(width: UIScreen.screenWidth - 40.0)
+    }
 }
 
 struct SettingsView: View {
@@ -50,25 +69,43 @@ struct SettingsView: View {
                     .font(.system(size: 20))
                     .padding(.top, 10)
             //blue is a special case
-                Button(action: {
+                if #available(iOS 15.0, *) {
+                    Button(action: {
                         UIApplication.shared.setAlternateIconName("BlueAlt") { (error) in
                             //
                         }
                     }, label: {
-                    Text("Swap to blue")
-                            .padding(.horizontal, 57.0)
-                    Image("blue")
+                        Spacer()
+                        Text("Swap to blue")
+                        Spacer()
+                        Image("blue")
                             .resizable()
                             .frame(width: 100.0, height: 100.0)
-                            .multilineTextAlignment(.trailing)
                     })
-                .padding()
-                .frame(width: UIScreen.screenWidth - 40.0)
-                .background(.regularMaterial)
+                    .padding()
+                    .frame(width: UIScreen.screenWidth - 40.0)
+                    .background(.regularMaterial)
+                } else {
+                    // Fallback on earlier versions
+                    Button(action: {
+                        UIApplication.shared.setAlternateIconName("BlueAlt") { (error) in
+                            //
+                        }
+                    }, label: {
+                        Spacer()
+                        Text("Swap to blue")
+                        Spacer()
+                        Image("blue")
+                            .resizable()
+                            .frame(width: 100.0, height: 100.0)
+                    })
+                    .padding()
+                    .frame(width: UIScreen.screenWidth - 40.0)
+                }
             
-                generateIconButton(color: "Dark", horizontalPadding: 56.0)
-                generateIconButton(color: "Red", horizontalPadding: 59.0)
-                generateIconButton(color: "Green", horizontalPadding: 50.0)
+                generateIconButton(color: "Dark")
+                generateIconButton(color: "Red")
+                generateIconButton(color: "Green")
             }
         }
     }
