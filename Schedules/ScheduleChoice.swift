@@ -10,11 +10,13 @@ import Foundation
 struct ScheduleChoice {
     static var scheduleChoice = "regular_schedule"
     
-    public static var description: String {
-        if scheduleChoice == "regular_schedule" {
+    static func getName(name: String) -> String {
+        if name == "regular_schedule" {
             return "Regular Schedule"
-        } else if scheduleChoice == "conference_schedule" {
+        } else if name == "conference_schedule" {
             return "Conference Schedule"
+        } else if name == "homeroom_schedule" {
+            return "Homeroom Schedule"
         }
         return ""
     }
