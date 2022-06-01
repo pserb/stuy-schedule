@@ -98,14 +98,15 @@ let blockData =
 "May 26, 2022": ["B2", "Math Testing, Music, Art Testing"],
 "May 27, 2022": ["A2", "CS, SS Testing and Technology"],
 "May 31, 2022": ["B1", "Science Testing"],
-"June 2, 2022": ["A1", "Math Testing, Music, Art , Tech"],
-"June 3, 2022": ["B2", "WL, ELA, CS, SS and Health Testing"],
-"June 6, 2022": ["A2", "Science Testing In Class Finals or Unit Tests"],
-"June 7, 2022": ["B1", "WL, ELA, Health In Class Finals or Unit Tests"],
-"June 8, 2022": ["A1", "Math, Music, Art In Class Finals or Unit Tests"],
-"June 10, 2022": ["B2", "CS, SS, Tech In Class Finals or Unit Tests"],
-"June 13, 2022": ["A2", "No Finals/Units Makeup Test Day"],
-"June 14, 2022": ["B", "Last Class Day Makeup Test Day"]
+"June 1, 2022": ["A1", "No Testing"],
+"June 2, 2022": ["B2", "Math Testing, Music, Art , Tech"],
+"June 3, 2022": ["A2", "WL, ELA, CS, SS and Health Testing"],
+"June 6, 2022": ["B1", "Science Testing In Class Finals or Unit Tests"],
+"June 7, 2022": ["A1", "WL, ELA, Health In Class Finals or Unit Tests"],
+"June 8, 2022": ["B2", "Math, Music, Art In Class Finals or Unit Tests"],
+"June 10, 2022": ["A2", "CS, SS, Tech In Class Finals or Unit Tests"],
+"June 13, 2022": ["B", "No Finals/Units Makeup Test Day"],
+"June 14, 2022": ["A", "Last Class Day Makeup Test Day"]
 ]
         
         for (key, value) in blockData {
