@@ -22,7 +22,7 @@ extension Date {
     }
 }
 
-private func readLocalFile(forName name: String) -> Data? {
+func readLocalFile(forName name: String) -> Data? {
     do {
         if let bundlePath = Bundle.main.path(forResource: name,
                                              ofType: "json"),
