@@ -7,34 +7,23 @@
 
 import SwiftUI
 import WidgetKit
+import Network
 
 var scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
-
-@ViewBuilder func scheduleButton(schedule: String) -> some View {
-    if #available(iOS 15.0, *) {
-        Button(action: {
-            ScheduleChoice.scheduleChoice = schedule
-            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
-        }, label: {
-            Image(systemName: "rectangle.2.swap")
-            Text("Swap to \(ScheduleChoice.getName(name: schedule))")
-//                .padding(.trailing, 20)
-        })
-        .padding(.all, 10)
-        .padding(.horizontal, 10)
-        .background(.regularMaterial)
-    } else {
-        Button(action: {
-            ScheduleChoice.scheduleChoice = schedule
-            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
-        }, label: {
-            Image(systemName: "rectangle.2.swap")
-            Text("Swap to \(ScheduleChoice.getName(name: schedule))")
-        })
-    }
-}
-
 let formatter = DateFormatter()
+
+func isWeekend(date: Date) -> Bool {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .full
+    
+    let splitDate = formatter.string(from: date).split(separator: ",")
+    let dayName = splitDate[0]
+    
+    if dayName == "Saturday" || dayName == "Sunday" {
+        return true
+    }
+    return false
+}
 
 struct HomeView: View {
     
@@ -44,102 +33,186 @@ struct HomeView: View {
     @State var timeFromMinutes: Int = 0
     @State var period: Period = Period(startTime: Date(), duration: 0, name: "")
     @State var timeToMinutes: Int = 0
-
+    
+    @State var APIData = GetAPIData(date: Date())
+    @State var APIweekSchedule: [ParseDay]? = nil
+    @State var isSchool: Bool = true
+    
+    @State var currentPeriodText: String = "Current period"
+    @State var announcement: String? = nil
+    @State var nextAnnouncement: String? = nil
     
     var body: some View {
-
+        
         ScrollView {
             
-            Text("Schedule choice:")
-                .padding(.top)
-            Text("\(ScheduleChoice.getName(name: ScheduleChoice.scheduleChoice))")
-                .bold()
-                .font(.system(size: 20))
-                .padding(.bottom)
-            
-            VStack {
-                scheduleButton(schedule: "regular_schedule")
-                scheduleButton(schedule: "conference_schedule")
-                scheduleButton(schedule: "homeroom_schedule")
+            if isSchool {
+                if nextAnnouncement != nil {
+                    Text("Announcement")
+                        .bold()
+                        .font(.system(size: 20))
+                        .multilineTextAlignment(.center)
+                    Text(nextAnnouncement!)
+                        .multilineTextAlignment(.center)
+                }
             }
             
-            Text("Don't forget to add the widget!")
-                .padding(.top, 20)
+            Text("Today's Schedule")
+                .onReceive(timer) { _ in
+                    
+                    UserNetwork.monitor = NWPathMonitor()
+                    UserNetwork.queue = DispatchQueue(label: "Monitor")
+                    UserNetwork.monitor.start(queue: UserNetwork.queue)
+                    
+                    UserNetwork.monitor.pathUpdateHandler = { path in
+                        if path.status == .satisfied {
+                            UserPrefs.tryAPICall()
+                        } else {
+                            // use local info
+                        }
+                    }
+                    
+                    APIData = GetAPIData(date: Date())
+                    APIweekSchedule = APIData.getWeekSchedule()
+                    
+                    announcement = APIData.getTodayAnnouncement(date: Date())
+                    nextAnnouncement = APIData.getNextAnnouncement(date: Date())
+                }
+                .padding(.top)
+            if isSchool {
+                Text("\(ScheduleChoice.getName(name: ScheduleChoice.scheduleChoice))")
+                    .bold()
+                    .font(.system(size: 20))
+                    .padding(.bottom)
+                    .onReceive(timer) { _ in
+                        // get today's schedule
+                        let today = APIData.getToday(date: Date())
+                        if today != nil {
+                            ScheduleChoice.scheduleChoice = today!.bell
+                        }
+                    }
+            } else {
+                Text("No School")
+                    .bold()
+                    .font(.system(size: 20))
+                    .padding(.bottom)
+            }
+            
+//            Text("Don't forget to add the widget!")
+//                .padding(.top, 20)
             
             Spacer()
             
-            Text("Current Period:")
-                .padding(.top, 50)
+            Text("\(currentPeriodText)")
+                .padding(.top, 20)
                 .multilineTextAlignment(.center)
-            // SDFHSFOSJFPSOFJSPOFJSFDPOSDFJOPSFJSDPFOSPDOFJSDFPOSJDFPSODFJSPDFOJ
-            Text("Period 3")
-                .font(.system(size: 35))
-                .bold()
-                .padding(.bottom, 20)
-                .multilineTextAlignment(.center)
-                .onReceive(timer) { _ in
-                    scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
-                    self.period = scheduleChoice.getPeriod(Date())
-                }
             
-            HStack {
-                Spacer()
-                VStack {
-                    Text("Minutes Into:")
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal,20.0)
-                    // SDFHSFOSJFPSOFJSPOFJSFDPOSDFJOPSFJSDPFOSPDOFJSDFPOSJDFPSODFJSPDFOJ
-                    Text("10")
-                        .font(.system(size: 50))
+            if !isSchool {
+                // if it is the weekend
+                if isWeekend(date: Date()) {
+                    Text("Have a great weekend!")
+                        .font(.system(size: 30))
                         .bold()
-                        .foregroundColor(.green)
+                        .padding()
                         .multilineTextAlignment(.center)
-                        .padding(.horizontal,20.0)
-                        .onReceive(timer) { _ in
-                            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
-                            let period = scheduleChoice.getPeriod(Date())
-                            self.timeFromMinutes = Date().minutes(from: period.startTime)
-                        }
                 }
-                
-                
-                Spacer()
-                
-                VStack {
-                    Text("Minutes to End:")
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal,20.0)
-                    // SDFHSFOSJFPSOFJSPOFJSFDPOSDFJOPSFJSDPFOSPDOFJSDFPOSJDFPSODFJSPDFOJ
-                    Text("34")
-                        .font(.system(size: 50))
+                if announcement != nil {
+                    Text("Announcement\n\n\(announcement!)")
+                        .font(.system(size: 25))
                         .bold()
-                        .foregroundColor(.red)
+                        .padding()
                         .multilineTextAlignment(.center)
-                        .padding(.horizontal,20.0)
-                        .onReceive(timer) { _ in
-                            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
-                            let period = scheduleChoice.getPeriod(Date())
-                            self.timeToMinutes = Date().minutes(from: period.endTime) * -1
-                        }
                 }
-                Spacer()
             }
-            .padding(.bottom, 10)
-            // SDFHSFOSJFPSOFJSPOFJSFDPOSDFJOPSFJSDPFOSPDOFJSDFPOSJDFPSODFJSPDFOJ
-            Text("9:41:00 AM")
-                .bold()
-                .font(.system(size: 20))
-                .onReceive(timer) { _ in
-                    formatter.timeStyle = .medium
-                    self.currentTime = formatter.string(from: Date())
-                }
             
-
-        
-            Text("Created by Paul Serbanescu")
-                .padding(.top, 80)
+            if isSchool {
+                Text("\(period.name)")
+                    .font(.system(size: 35))
+                    .bold()
+                    .padding(.bottom, 20)
+                    .multilineTextAlignment(.center)
+                    .onReceive(timer) { _ in
+                        if APIweekSchedule != nil {
+                            let currentPeriod: Period? = APIData.getCurrentPeriod(date: Date())
+                            if currentPeriod != nil {
+                                self.period = currentPeriod!
+                                self.isSchool = true
+                            } else {
+                                currentPeriodText = ""
+                                self.isSchool = false
+                            }
+                        } else {
+                            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
+                            self.period = scheduleChoice.getPeriod(Date())
+                        }
+                    }
+                
+                //            if isSchool {
+                HStack {
+                    Spacer()
+                    VStack {
+                        Text("Minutes Into")
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal,20.0)
+                        Text("\(timeFromMinutes)")
+                            .font(.system(size: 50))
+                            .bold()
+                            .foregroundColor(.green)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal,20.0)
+                            .onReceive(timer) { _ in
+                                if APIweekSchedule != nil {
+                                    self.timeFromMinutes = Date().minutes(from: period.startTime)
+                                } else {
+                                    scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
+                                    let period = scheduleChoice.getPeriod(Date())
+                                    self.timeFromMinutes = Date().minutes(from: period.startTime)
+                                }
+                            }
+                    }
+                    
+                    
+                    Spacer()
+                    
+                    VStack {
+                        Text("Minutes to End")
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal,20.0)
+                        Text("\(timeToMinutes)")
+                            .font(.system(size: 50))
+                            .bold()
+                            .foregroundColor(.red)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal,20.0)
+                            .onReceive(timer) { _ in
+                                if APIweekSchedule != nil {
+                                    self.timeToMinutes = Date().minutes(from: period.endTime) * -1 + 1
+                                } else {
+                                    scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
+                                    let period = scheduleChoice.getPeriod(Date())
+                                    self.timeToMinutes = Date().minutes(from: period.endTime) * -1 + 1
+                                }
+                            }
+                    }
+                    Spacer()
+                }
+                .padding(.bottom, 10)
+                
+                
+                Text("\(currentTime)")
+                    .bold()
+                    .font(.system(size: 20))
+                    .onReceive(timer) { _ in
+                        formatter.timeStyle = .medium
+                        self.currentTime = formatter.string(from: Date())
+                    }
+            }
         }
         .padding(20.0)
+        
+        .onDisappear(perform: {
+            UserNetwork.monitor.cancel()
+        })
     }
 }
 

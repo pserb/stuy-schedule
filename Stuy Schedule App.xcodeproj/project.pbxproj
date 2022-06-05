@@ -36,6 +36,10 @@
 		C5CE1F4B283539F1005A95E4 /* GetParsedSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CE1F49283539F1005A95E4 /* GetParsedSchedule.swift */; };
 		C5F05E5B28472B4200E43284 /* homeroom_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C5F05E5A28472B4200E43284 /* homeroom_schedule.json */; };
 		C5F05E5C28472B4200E43284 /* homeroom_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C5F05E5A28472B4200E43284 /* homeroom_schedule.json */; };
+		C5FCCED2284AFBD500A813BF /* UserPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FCCED1284AFBD500A813BF /* UserPrefs.swift */; };
+		C5FCCED3284AFBD500A813BF /* UserPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FCCED1284AFBD500A813BF /* UserPrefs.swift */; };
+		C5FCCED5284BFCE900A813BF /* APIScheduleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FCCED4284BFCE900A813BF /* APIScheduleHandler.swift */; };
+		C5FCCED6284BFCE900A813BF /* APIScheduleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FCCED4284BFCE900A813BF /* APIScheduleHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,8 @@
 		C5CE1F4328353750005A95E4 /* ParsePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsePeriod.swift; sourceTree = "<group>"; };
 		C5CE1F49283539F1005A95E4 /* GetParsedSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetParsedSchedule.swift; sourceTree = "<group>"; };
 		C5F05E5A28472B4200E43284 /* homeroom_schedule.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = homeroom_schedule.json; sourceTree = "<group>"; };
+		C5FCCED1284AFBD500A813BF /* UserPrefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefs.swift; sourceTree = "<group>"; };
+		C5FCCED4284BFCE900A813BF /* APIScheduleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIScheduleHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,12 +180,14 @@
 		C5269F13280F82F900F48AEF /* Schedules */ = {
 			isa = PBXGroup;
 			children = (
+				C5FCCED0284AFBCB00A813BF /* user */,
 				C5269F1B280F8CC700F48AEF /* data */,
 				C5269F14280F830A00F48AEF /* Period.swift */,
 				C5CE1F40283536DE005A95E4 /* ParseSchedule.swift */,
 				C5CE1F4328353750005A95E4 /* ParsePeriod.swift */,
 				C5CE1F49283539F1005A95E4 /* GetParsedSchedule.swift */,
 				C55845E928367BE200D3910E /* ScheduleChoice.swift */,
+				C5FCCED4284BFCE900A813BF /* APIScheduleHandler.swift */,
 			);
 			path = Schedules;
 			sourceTree = "<group>";
@@ -201,6 +209,14 @@
 				C514AAEE28090856005E459F /* HomeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C5FCCED0284AFBCB00A813BF /* user */ = {
+			isa = PBXGroup;
+			children = (
+				C5FCCED1284AFBD500A813BF /* UserPrefs.swift */,
+			);
+			path = user;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5CE1F41283536DE005A95E4 /* ParseSchedule.swift in Sources */,
+				C5FCCED2284AFBD500A813BF /* UserPrefs.swift in Sources */,
 				C5269F15280F830A00F48AEF /* Period.swift in Sources */,
 				C514AAEF28090856005E459F /* HomeView.swift in Sources */,
 				C55845EF283ED1E300D3910E /* SettingsView.swift in Sources */,
@@ -318,6 +335,7 @@
 				C514AAED28090856005E459F /* Stuy_ScheduleApp.swift in Sources */,
 				C55845F3283ED4CE00D3910E /* ContentView.swift in Sources */,
 				C514AB0C28090896005E459F /* Widget.intentdefinition in Sources */,
+				C5FCCED5284BFCE900A813BF /* APIScheduleHandler.swift in Sources */,
 				C5CE1F4A283539F1005A95E4 /* GetParsedSchedule.swift in Sources */,
 				C55845EA28367BE200D3910E /* ScheduleChoice.swift in Sources */,
 			);
@@ -329,10 +347,12 @@
 			files = (
 				C5269F1F280F92B700F48AEF /* Period.swift in Sources */,
 				C55845EB28367BE200D3910E /* ScheduleChoice.swift in Sources */,
+				C5FCCED6284BFCE900A813BF /* APIScheduleHandler.swift in Sources */,
 				C5CE1F42283536DE005A95E4 /* ParseSchedule.swift in Sources */,
 				C514AB0B28090896005E459F /* Widget.intentdefinition in Sources */,
 				C5CE1F4B283539F1005A95E4 /* GetParsedSchedule.swift in Sources */,
 				C5CE1F4528353750005A95E4 /* ParsePeriod.swift in Sources */,
+				C5FCCED3284AFBD500A813BF /* UserPrefs.swift in Sources */,
 				C514AB0628090896005E459F /* Widget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
