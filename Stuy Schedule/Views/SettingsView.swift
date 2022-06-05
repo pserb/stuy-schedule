@@ -14,6 +14,30 @@ extension UIScreen {
    static let screenSize = UIScreen.main.bounds.size
 }
 
+// function generates schedule swapping buttons
+@ViewBuilder func scheduleButton(schedule: String) -> some View {
+    if #available(iOS 15.0, *) {
+        Button(action: {
+            ScheduleChoice.scheduleChoice = schedule
+            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
+        }, label: {
+            Image(systemName: "rectangle.2.swap")
+            Text("Swap to \(ScheduleChoice.getName(name: schedule))")
+        })
+        .padding(.all, 10)
+        .padding(.horizontal, 10)
+        .background(.regularMaterial)
+    } else {
+        Button(action: {
+            ScheduleChoice.scheduleChoice = schedule
+            scheduleChoice = GetParsedSchedule(jsonName: ScheduleChoice.scheduleChoice, Date())
+        }, label: {
+            Image(systemName: "rectangle.2.swap")
+            Text("Swap to \(ScheduleChoice.getName(name: schedule))")
+        })
+    }
+}
+
 // fucntion generates alternate app icon buttons
 @ViewBuilder func generateIconButton(color: String) -> some View {
     if #available(iOS 15.0, *) {
@@ -62,6 +86,17 @@ struct SettingsView: View {
                 .bold()
                 .font(.system(size: 40))
                 .padding(.top, 20)
+            
+            //schedule swapper
+            VStack {
+                Text("Change Schedule:")
+                    .font(.system(size: 20))
+                    .padding()
+                scheduleButton(schedule: "regular_schedule")
+                scheduleButton(schedule: "conference_schedule")
+                scheduleButton(schedule: "homeroom_schedule")
+            }
+            .padding(.bottom, 10)
             
             //icon picker
             VStack {
