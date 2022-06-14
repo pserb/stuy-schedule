@@ -26,7 +26,7 @@ extension UIScreen {
         })
         .padding(.all, 10)
         .padding(.horizontal, 10)
-        .background(.regularMaterial)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 10))
     } else {
         Button(action: {
             ScheduleChoice.scheduleChoice = schedule
@@ -52,11 +52,12 @@ extension UIScreen {
             Image("\(color.lowercased())")
                 .resizable()
                 .frame(width: 100.0, height: 100.0)
+                .cornerRadius(20)
                 .multilineTextAlignment(.trailing)
         })
         .padding()
         .frame(width: UIScreen.screenWidth - 40.0)
-        .background(.regularMaterial)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 15))
     } else {
         // Fallback on earlier versions
         Button(action: {
@@ -116,10 +117,11 @@ struct SettingsView: View {
                         Image("blue")
                             .resizable()
                             .frame(width: 100.0, height: 100.0)
+                            .cornerRadius(20)
                     })
                     .padding()
                     .frame(width: UIScreen.screenWidth - 40.0)
-                    .background(.regularMaterial)
+                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 15))
                 } else {
                     // Fallback on earlier versions
                     Button(action: {
