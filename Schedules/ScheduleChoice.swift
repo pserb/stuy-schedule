@@ -17,6 +17,8 @@ struct ScheduleChoice {
             return "Conference Schedule"
         } else if name == "homeroom_schedule" {
             return "Homeroom Schedule"
+        } else if name == "special20_homeroom_schedule" {
+            return "20 - Minute Homeroom Schedule"
         }
         return ""
     }

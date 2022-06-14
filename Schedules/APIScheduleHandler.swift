@@ -36,6 +36,8 @@ struct ParseDay: Decodable {
 struct GetAPIData {
     
     var weekSchedule: [ParseDay] = []
+    // format is day:announcement
+    var announcements: [[String]] = []
     
     init(date: Date) {
 //        print("initalizer called")
@@ -56,8 +58,19 @@ struct GetAPIData {
 //            print("data is not nil")
             let data = data!
             self.weekSchedule = data.days
+            
+            // reset array
+//            announcements.removeAll()
+            for day in weekSchedule {
+//                print(day.announcement)
+                if day.announcement != nil {
+//                    print("not nil!")
+                    let subarr: [String] = [day.day, day.announcement!]
+                    announcements.append(subarr)
+                }
+            }
         }
-//        print("data is nil")
+//        print(announcements)
     }
     
     mutating func getToday(date: Date) -> ParseDay? {
@@ -142,13 +155,14 @@ struct GetAPIData {
                 if day.block == nil {
                     return nil
                 } else {
-                    let block = day.block!
-                    // a or an
-                    if (block == "A") || (block == "A1") || (block == "A2") {
-                        return "an \(block)"
-                    } else {
-                        return "a \(block)"
-                    }
+                    return day.block
+//                    let block = day.block!
+//                    // a or an
+//                    if (block == "A") || (block == "A1") || (block == "A2") {
+//                        return "an \(block)"
+//                    } else {
+//                        return "a \(block)"
+//                    }
                 }
             }
         }
@@ -172,11 +186,23 @@ struct GetAPIData {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         
-        if getTodayAnnouncement(date: date) == nil {
-            for day in weekSchedule {
-                //first announcement we find
-                if day.announcement != nil {
-                    return "\(day.day): \(day.announcement!)"
+        var N: Int = 0
+        // find start pos
+        for day in weekSchedule {
+            if day.day == formatter.string(from: date) {
+                break
+            } else {
+                N += 1
+            }
+        }
+        
+        if !weekSchedule.isEmpty && N <= weekSchedule.count-1 {
+            if getTodayAnnouncement(date: date) == nil {
+                for i in N...weekSchedule.count-1 {
+                    // find next announcement
+                    if weekSchedule[i].announcement != nil {
+                        return "\(weekSchedule[i].day): \(weekSchedule[i].announcement!)"
+                    }
                 }
             }
         }
