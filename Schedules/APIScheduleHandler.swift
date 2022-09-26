@@ -25,7 +25,7 @@ struct ParseDay: Decodable {
     // there must always be a day
     let day: String
     // there must always be a bell (NO SCHOOL) if no school
-    let bell: String
+    let bell: ParseDaySchedule?
     // will be nil if no school
     let block: String?
     let testing: String?
@@ -33,14 +33,25 @@ struct ParseDay: Decodable {
     let announcement: String?
 }
 
+struct ParseDaySchedule: Decodable {
+    let scheduleType: String
+    let scheduleName: String
+    let schedule: [ParsePeriod]
+}
+
 struct GetAPIData {
     
     var weekSchedule: [ParseDay] = []
+    
+    // TESTING //
+    var week: [String:ParseDay] = [:]
+    var announcements_dict: [String:String] = [:]
+    // TESTING //
+    
     // format is day:announcement
     var announcements: [[String]] = []
     
     init(date: Date) {
-//        print("initalizer called")
         generateWeekSchedule(date: date)
     }
     
@@ -55,39 +66,48 @@ struct GetAPIData {
     mutating func generateWeekSchedule(date: Date) {
         let data: ParseWeekSchedule? = UserPrefs.parseData(fileName: "weekly-schedule")
         if data != nil {
-//            print("data is not nil")
             let data = data!
             self.weekSchedule = data.days
             
-            // reset array
-//            announcements.removeAll()
+            for day in data.days {
+                week[day.day] = day
+                if (day.announcement != nil) {
+                    announcements_dict[day.day] = day.announcement!
+                }
+            }
+            
             for day in weekSchedule {
-//                print(day.announcement)
                 if day.announcement != nil {
-//                    print("not nil!")
                     let subarr: [String] = [day.day, day.announcement!]
                     announcements.append(subarr)
                 }
             }
         }
-//        print(announcements)
     }
     
     mutating func getToday(date: Date) -> ParseDay? {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         
-        for day in weekSchedule {
-            // if it is today
-            if day.day == formatter.string(from: date) {
-                // if there is no school
-                if day.bell == "NO SCHOOL" {
-                    return nil
-                }
-                return day
+        let td: ParseDay? = week[formatter.string(from: date)]
+        if td != nil {
+            if td!.bell != nil {
+                return td
             }
         }
         return nil
+        
+//        for day in weekSchedule {
+//            // if it is today
+//            if day.day == formatter.string(from: date) {
+//                // if there is no school
+//                if day.bell == nil {
+//                    return nil
+//                }
+//                return day
+//            }
+//        }
+//        return nil
     }
     
     internal func parseLocalSchedule(jsonName: String) -> [ParsePeriod] {
@@ -95,6 +115,10 @@ struct GetAPIData {
         
         let parsedJSON = try! JSONDecoder().decode(ParseSchedule.self, from: jsonData)
         return parsedJSON.schedule
+    }
+    
+    internal func parseAPISchedule(bell: ParseDaySchedule) -> [ParsePeriod] {
+        return bell.schedule
     }
     
     mutating func generateTodayBellSchedule(date: Date) -> [Period]? {
@@ -105,11 +129,11 @@ struct GetAPIData {
             // find today
             if day.day == formatter.string(from: date) {
                 // if it is not a school day: return false
-                if day.bell == "NO SCHOOL" {
+                if day.bell == nil {
                     return nil
                 } else {
                     // decode corresponding local json
-                    let parsedPeriods: [ParsePeriod] = parseLocalSchedule(jsonName: day.bell)
+                    let parsedPeriods: [ParsePeriod] = parseAPISchedule(bell: day.bell!)
                     var schedule: [Period] = []
                     
                     for period in parsedPeriods {
@@ -149,35 +173,29 @@ struct GetAPIData {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         
-        for day in weekSchedule {
-            // find today
-            if day.day == formatter.string(from: date) {
-                if day.block == nil {
-                    return nil
-                } else {
-                    return day.block
-//                    let block = day.block!
-//                    // a or an
-//                    if (block == "A") || (block == "A1") || (block == "A2") {
-//                        return "an \(block)"
-//                    } else {
-//                        return "a \(block)"
-//                    }
-                }
-            }
+        let td: ParseDay? = week[formatter.string(from: date)]
+        if td != nil {
+            return td?.block
         }
         return nil
+    }
+    
+    mutating func aOrAn(_ block: String) -> String {
+        for char in block {
+            if (char == "A") {
+                return "an"
+            }
+        }
+        return "a"
     }
     
     mutating func getTodayAnnouncement(date: Date) -> String? {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         
-        for day in weekSchedule {
-            // if today
-            if day.day == formatter.string(from: date) {
-                return day.announcement
-            }
+        let td: ParseDay? = week[formatter.string(from: date)]
+        if td != nil {
+            return td?.announcement
         }
         return nil
     }
@@ -209,5 +227,15 @@ struct GetAPIData {
         return getTodayAnnouncement(date: date)
     }
     
+    mutating func getTodayTesting(date: Date) -> String? {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        
+        let td: ParseDay? = week[formatter.string(from: date)]
+        if td != nil {
+            return td?.testing
+        }
+        return nil
+    }
     
 }
