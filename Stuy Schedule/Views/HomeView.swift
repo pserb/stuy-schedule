@@ -27,7 +27,6 @@ func isWeekend(date: Date) -> Bool {
 
 struct HomeView: View {
     
-    @State var currentTime = formatter.string(from: Date())
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @State var timeFromMinutes: Int = 0
@@ -40,23 +39,23 @@ struct HomeView: View {
     
     @State var currentPeriodText: String = "Current period"
     @State var announcement: String? = nil
-    @State var nextAnnouncement: String? = nil
+    @State public var nextAnnouncement: String? = nil
     
     @ViewBuilder func APIComponent() -> some View {
         Spacer().frame(width: 0, height: 0, alignment: .center)
             .onReceive(timer) { _ in
-                updateAPI()
+                updateAPI(override: false)
             }
     }
     
-    func updateAPI() {
+    func updateAPI(override: Bool) {
         UserNetwork.monitor = NWPathMonitor()
         UserNetwork.queue = DispatchQueue(label: "Monitor")
         UserNetwork.monitor.start(queue: UserNetwork.queue)
 
         UserNetwork.monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
-                UserPrefs.tryAPICall()
+                UserPrefs.tryAPICall(override: override)
             } else {
                 // use local info
             }
@@ -69,7 +68,7 @@ struct HomeView: View {
         nextAnnouncement = APIData.getNextAnnouncement(date: Date())
     }
     
-    @ViewBuilder func announcementComponent() -> some View {
+    @ViewBuilder public func announcementComponent() -> some View {
         if #available(iOS 15.0, *) {
             // condition: show announcements only when there is one to show
             if (nextAnnouncement != nil) {
@@ -116,23 +115,24 @@ struct HomeView: View {
     }
     
     @ViewBuilder func scheduleTypeComponentHelper() -> some View {
-        if isSchool {
-            Text("\(ScheduleChoice.getName(name: ScheduleChoice.scheduleChoice))")
-                .bold()
-                .onReceive(timer) { _ in
-                    updateScheduleType()
-                }
-        } else {
-            Text("No School")
-                .bold()
+            if isSchool {
+                Text("\(ScheduleChoice.scheduleName)")
+                    .bold()
+                    .onReceive(timer) { _ in
+                        updateScheduleName()
+                    }
+            } else {
+                Text("No School")
+                    .bold()
+            }
+
         }
-    }
     
-    func updateScheduleType() {
+    func updateScheduleName() {
         // get today's schedule
         let today = APIData.getToday(date: Date())
         if today != nil {
-            ScheduleChoice.scheduleChoice = today!.bell
+            ScheduleChoice.scheduleName = today!.bell!.scheduleName
         }
     }
     
@@ -173,8 +173,17 @@ struct HomeView: View {
     func updateCurrentPeriod() {
         // if we have this week's api info
         if (APIweekSchedule != nil) {
+            
+            let date = Date()
+            let calendar = Calendar.current
+
+            let hour = calendar.component(.hour, from: date)
+            let minute = calendar.component(.minute, from: date)
+            
+            let currentDate = calendar.date(bySettingHour: hour, minute: minute, second: 0, of: date)!
+            
             // get current period (by nature of the API if we dont get a period it is a weekday with no school)
-            let currentPeriod: Period? = APIData.getCurrentPeriod(date: Date())
+            let currentPeriod: Period? = APIData.getCurrentPeriod(date: currentDate)
             
             if (currentPeriod != nil) {
                 self.period = currentPeriod!
@@ -229,8 +238,16 @@ struct HomeView: View {
     }
     
     func updateScheduleTimes() {
-        self.timeFromMinutes = Date().minutes(from: period.startTime)
-        self.timeToMinutes = Date().minutes(from: period.endTime) * -1 + 1
+        let date = Date()
+        let calendar = Calendar.current
+
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        
+        let currentDate = calendar.date(bySettingHour: hour, minute: minute, second: 0, of: date)!
+        
+        self.timeFromMinutes = currentDate.minutes(from: period.startTime)
+        self.timeToMinutes = currentDate.minutes(from: period.endTime) * -1
     }
     
     func timeColor() -> Color {
@@ -308,6 +325,27 @@ struct HomeView: View {
             }
     }
     
+    @ViewBuilder func refreshButton() -> some View {
+        if #available(iOS 15.0, *) {
+            Button(action: {
+                updateAPI(override: true)
+//                WidgetCenter.shared.reloadAllTimelines()
+            }, label: {
+                Text("Refresh")
+            })
+            .padding(.all, 10)
+            .padding(.horizontal, 25)
+            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 15))
+        } else {
+            Button(action: {
+                updateAPI(override: true)
+//                WidgetCenter.shared.reloadAllTimelines()
+            }, label: {
+                Text("Refresh")
+            })
+        }
+    }
+    
     @ViewBuilder func creditComponent() -> some View {
         if #available(iOS 15.0, *) {
             Text("Created by [Paul Serbanescu](https://github.com/pserb)")
@@ -340,6 +378,11 @@ struct HomeView: View {
             if (isSchool) {
                 scheduleComponent()
             }
+            
+            // refresh button
+            Spacer()
+            refreshButton()
+            
             Spacer()
             
             // comp 4: credit
