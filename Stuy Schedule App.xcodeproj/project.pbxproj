@@ -20,14 +20,13 @@
 		C5269F15280F830A00F48AEF /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F14280F830A00F48AEF /* Period.swift */; };
 		C5269F1F280F92B700F48AEF /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5269F14280F830A00F48AEF /* Period.swift */; };
 		C5269F25280FBDE100F48AEF /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C514AAFE28090896005E459F /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C54C1F0A28CA1D8C00BB0B95 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C1F0928CA1D8C00BB0B95 /* DetailView.swift */; };
 		C54F52732818EDEF0003C307 /* regular_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C54F52722818EDEF0003C307 /* regular_schedule.json */; };
 		C54F52742818EDEF0003C307 /* regular_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C54F52722818EDEF0003C307 /* regular_schedule.json */; };
 		C55845EA28367BE200D3910E /* ScheduleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55845E928367BE200D3910E /* ScheduleChoice.swift */; };
 		C55845EB28367BE200D3910E /* ScheduleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55845E928367BE200D3910E /* ScheduleChoice.swift */; };
 		C55845EF283ED1E300D3910E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55845EE283ED1E300D3910E /* SettingsView.swift */; };
 		C55845F3283ED4CE00D3910E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55845F2283ED4CE00D3910E /* ContentView.swift */; };
-		C58BA8962858A957008D6757 /* special20_homeroom_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C58BA8952858A957008D6757 /* special20_homeroom_schedule.json */; };
-		C58BA8972858A957008D6757 /* special20_homeroom_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C58BA8952858A957008D6757 /* special20_homeroom_schedule.json */; };
 		C5CE1F3E283526A1005A95E4 /* conference_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CE1F3D283526A1005A95E4 /* conference_schedule.json */; };
 		C5CE1F3F283526A1005A95E4 /* conference_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CE1F3D283526A1005A95E4 /* conference_schedule.json */; };
 		C5CE1F41283536DE005A95E4 /* ParseSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CE1F40283536DE005A95E4 /* ParseSchedule.swift */; };
@@ -82,13 +81,13 @@
 		C514AB0828090896005E459F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C514AB0A28090896005E459F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5269F14280F830A00F48AEF /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		C54C1F0928CA1D8C00BB0B95 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C54F52722818EDEF0003C307 /* regular_schedule.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = regular_schedule.json; sourceTree = "<group>"; };
 		C55845E928367BE200D3910E /* ScheduleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleChoice.swift; sourceTree = "<group>"; };
 		C55845EE283ED1E300D3910E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C55845F2283ED4CE00D3910E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C564C27428321937002C92A6 /* Stuy Schedule App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stuy Schedule App.entitlements"; sourceTree = "<group>"; };
 		C564C27528321937002C92A6 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
-		C58BA8952858A957008D6757 /* special20_homeroom_schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = special20_homeroom_schedule.json; path = ../../../../.Trash/special20_homeroom_schedule.json; sourceTree = "<group>"; };
 		C5CE1F3D283526A1005A95E4 /* conference_schedule.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = conference_schedule.json; sourceTree = "<group>"; };
 		C5CE1F40283536DE005A95E4 /* ParseSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseSchedule.swift; sourceTree = "<group>"; };
 		C5CE1F4328353750005A95E4 /* ParsePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsePeriod.swift; sourceTree = "<group>"; };
@@ -198,7 +197,6 @@
 		C5269F1B280F8CC700F48AEF /* data */ = {
 			isa = PBXGroup;
 			children = (
-				C58BA8952858A957008D6757 /* special20_homeroom_schedule.json */,
 				C54F52722818EDEF0003C307 /* regular_schedule.json */,
 				C5CE1F3D283526A1005A95E4 /* conference_schedule.json */,
 				C5F05E5A28472B4200E43284 /* homeroom_schedule.json */,
@@ -211,6 +209,7 @@
 			children = (
 				C55845EE283ED1E300D3910E /* SettingsView.swift */,
 				C514AAEE28090856005E459F /* HomeView.swift */,
+				C54C1F0928CA1D8C00BB0B95 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -308,7 +307,6 @@
 				C5F05E5B28472B4200E43284 /* homeroom_schedule.json in Resources */,
 				C54F52732818EDEF0003C307 /* regular_schedule.json in Resources */,
 				C514AAF428090856005E459F /* Preview Assets.xcassets in Resources */,
-				C58BA8962858A957008D6757 /* special20_homeroom_schedule.json in Resources */,
 				C514AAF128090856005E459F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,7 +318,6 @@
 				C5F05E5C28472B4200E43284 /* homeroom_schedule.json in Resources */,
 				C5CE1F3F283526A1005A95E4 /* conference_schedule.json in Resources */,
 				C514AB0928090896005E459F /* Assets.xcassets in Resources */,
-				C58BA8972858A957008D6757 /* special20_homeroom_schedule.json in Resources */,
 				C54F52742818EDEF0003C307 /* regular_schedule.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +336,7 @@
 				C55845EF283ED1E300D3910E /* SettingsView.swift in Sources */,
 				C5CE1F4428353750005A95E4 /* ParsePeriod.swift in Sources */,
 				C514AAED28090856005E459F /* Stuy_ScheduleApp.swift in Sources */,
+				C54C1F0A28CA1D8C00BB0B95 /* DetailView.swift in Sources */,
 				C55845F3283ED4CE00D3910E /* ContentView.swift in Sources */,
 				C514AB0C28090896005E459F /* Widget.intentdefinition in Sources */,
 				C5FCCED5284BFCE900A813BF /* APIScheduleHandler.swift in Sources */,
@@ -496,7 +494,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Stuy Schedule App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stuy Schedule/Preview Content\"";
 				DEVELOPMENT_TEAM = 9U9HU9YN8U;
 				ENABLE_PREVIEWS = YES;
@@ -515,7 +513,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1";
 				PRODUCT_NAME = "Stuy Schedule";
 				SUPPORTS_MACCATALYST = YES;
@@ -533,7 +531,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Stuy Schedule App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stuy Schedule/Preview Content\"";
 				DEVELOPMENT_TEAM = 9U9HU9YN8U;
 				ENABLE_PREVIEWS = YES;
@@ -552,7 +550,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1";
 				PRODUCT_NAME = "Stuy Schedule";
 				SUPPORTS_MACCATALYST = YES;
@@ -569,7 +567,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9U9HU9YN8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -580,7 +578,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1.ScheduleWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -598,7 +596,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9U9HU9YN8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -609,7 +607,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pserb.Stuy-Schedule-App-1.ScheduleWidget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
