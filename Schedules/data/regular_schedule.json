@@ -1,5 +1,6 @@
 {
   "scheduleType": "regular",
+  "scheduleName": "Regular Schedule",
   "schedule": [
     {
       "name": "Before Period 1",

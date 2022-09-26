@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Period {
+struct Period: Hashable {
     // Start Time
     var startTime: Date
     // Duration (in minutes)

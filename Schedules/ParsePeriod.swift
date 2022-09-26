@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ParsePeriod: Decodable {
+struct ParsePeriod: Decodable, Hashable {
     let name: String
     let startTime: String
     let duration: Int

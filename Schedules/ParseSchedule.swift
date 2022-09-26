@@ -9,5 +9,6 @@ import Foundation
 
 struct ParseSchedule: Decodable {
     let scheduleType: String
+    let scheduleName: String
     let schedule: [ParsePeriod]
 }

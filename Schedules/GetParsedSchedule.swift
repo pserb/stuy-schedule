@@ -40,13 +40,7 @@ func readLocalFile(forName name: String) -> Data? {
 struct GetParsedSchedule {
     
     var schedule: [Period] = []
-    
-    internal func parse(jsonName: String) -> [ParsePeriod] {
-        let jsonData = readLocalFile(forName: jsonName)!
-        
-        let parsedJSON = try! JSONDecoder().decode(ParseSchedule.self, from: jsonData)
-        return parsedJSON.schedule
-    }
+    var name: String = ""
     
     init(jsonName: String, _ date: Date) {
         generateSchedule(jsonName: jsonName, date)
@@ -58,6 +52,15 @@ struct GetParsedSchedule {
             self.schedule.append(period.parse(date))
         }
 //        return schedule
+    }
+    
+    internal mutating func parse(jsonName: String) -> [ParsePeriod] {
+        let jsonData = readLocalFile(forName: jsonName)!
+        
+        let parsedJSON = try! JSONDecoder().decode(ParseSchedule.self, from: jsonData)
+        self.name = parsedJSON.scheduleName
+        
+        return parsedJSON.schedule
     }
     
     mutating func getPeriod(_ date: Date) -> Period {

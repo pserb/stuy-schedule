@@ -1,5 +1,6 @@
 {
   "scheduleType": "conference",
+  "scheduleName": "Conference Schedule",
   "schedule": [
     {
       "name": "Before Period 1",

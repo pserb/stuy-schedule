@@ -1,5 +1,6 @@
 {
   "scheduleType": "homeroom",
+  "scheduleName": "Homeroom Schedule",
   "schedule": [
     {
       "name": "Before Period 1",
