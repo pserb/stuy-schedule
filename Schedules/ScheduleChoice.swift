@@ -9,6 +9,7 @@ import Foundation
 
 struct ScheduleChoice {
     static var scheduleChoice = "regular_schedule"
+    static var scheduleName = "Regular Schedule"
     
     static func getName(name: String) -> String {
         if name == "regular_schedule" {
@@ -17,8 +18,6 @@ struct ScheduleChoice {
             return "Conference Schedule"
         } else if name == "homeroom_schedule" {
             return "Homeroom Schedule"
-        } else if name == "special20_homeroom_schedule" {
-            return "20 - Minute Homeroom Schedule"
         }
         return ""
     }
