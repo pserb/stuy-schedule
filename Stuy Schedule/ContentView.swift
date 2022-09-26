@@ -17,6 +17,13 @@ struct ContentView: View {
                     Text("Schedule")
                 }
             
+            DetailView()
+                .tabItem() {
+                    Image(systemName: "list.bullet.rectangle")
+                    Text("Details")
+                }
+            
+            
             SettingsView()
                 .tabItem() {
                     Image(systemName: "gear")
