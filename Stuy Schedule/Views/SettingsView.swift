@@ -81,23 +81,12 @@ struct SettingsView: View {
     
     var body: some View {
         
-        ScrollView {
+        ScrollView(showsIndicators: false) {
         
             Text("Settings")
                 .bold()
                 .font(.system(size: 40))
                 .padding(.top, 20)
-            
-            //schedule swapper
-            VStack {
-                Text("Change Schedule:")
-                    .font(.system(size: 20))
-                    .padding()
-                scheduleButton(schedule: "regular_schedule")
-                scheduleButton(schedule: "conference_schedule")
-                scheduleButton(schedule: "homeroom_schedule")
-            }
-            .padding(.bottom, 10)
             
             //icon picker
             VStack {
@@ -145,6 +134,7 @@ struct SettingsView: View {
                 generateIconButton(color: "Green")
             }
         }
+        .padding(.vertical, 4.0)
     }
 }
 
