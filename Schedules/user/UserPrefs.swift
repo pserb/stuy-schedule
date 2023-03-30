@@ -10,7 +10,7 @@ import SwiftUI
 import Network
 
 // PROD //
-let APIURL: String = "https://pserb-web.vercel.app/api/weekly-schedule"
+let APIURL: String = "https://api-stuyschedule.vercel.app/api/weekly-schedule"
 // PROD //
 
 //        let APIURL: String = "https://pserb-web.vercel.app/api/test-schedule"
